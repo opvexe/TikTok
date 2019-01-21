@@ -33,6 +33,7 @@
 		D08A0C2D21F5733B00F8D7D9 /* TTMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C2C21F5733B00F8D7D9 /* TTMineViewController.m */; };
 		D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C2F21F5940A00F8D7D9 /* TTPlusButtonSubclass.m */; };
 		D08A0C3421F594E700F8D7D9 /* TTPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */; };
+		D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C3721F5BDC900F8D7D9 /* TTTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,8 @@
 		D08A0C2F21F5940A00F8D7D9 /* TTPlusButtonSubclass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPlusButtonSubclass.m; sourceTree = "<group>"; };
 		D08A0C3221F594E700F8D7D9 /* TTPublishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPublishViewController.h; sourceTree = "<group>"; };
 		D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPublishViewController.m; sourceTree = "<group>"; };
+		D08A0C3621F5BDC900F8D7D9 /* TTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTools.h; sourceTree = "<group>"; };
+		D08A0C3721F5BDC900F8D7D9 /* TTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTools.m; sourceTree = "<group>"; };
 		F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.release.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +257,7 @@
 		D08A0BEC21F5673A00F8D7D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D08A0C3521F5BDB600F8D7D9 /* Tool */,
 				D08A0C0C21F5686C00F8D7D9 /* Constant */,
 				D08A0BEE21F5685A00F8D7D9 /* Category */,
 			);
@@ -361,6 +365,15 @@
 				D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */,
 			);
 			path = Publish;
+			sourceTree = "<group>";
+		};
+		D08A0C3521F5BDB600F8D7D9 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D08A0C3621F5BDC900F8D7D9 /* TTTools.h */,
+				D08A0C3721F5BDC900F8D7D9 /* TTTools.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,6 +567,7 @@
 				D08A0C0221F5685A00F8D7D9 /* UIImage+ScaleImage.m in Sources */,
 				D08A0C2721F5732300F8D7D9 /* TTAttentionViewController.m in Sources */,
 				D08A0C0321F5685A00F8D7D9 /* UIView+Category.m in Sources */,
+				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,

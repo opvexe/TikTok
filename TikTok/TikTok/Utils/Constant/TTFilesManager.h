@@ -35,6 +35,7 @@
 #import <MJExtension.h>
 #import <MJRefresh.h>
 #import <YYCache.h>
+#import <Toast.h>
 #import <UIImageView+WebCache.h>
 
 #endif /* TTFilesManager_h */
