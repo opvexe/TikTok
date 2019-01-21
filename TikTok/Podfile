@@ -1,0 +1,18 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TikTok' do
+
+pod 'CYLTabBarController'
+pod 'IQKeyboardManager'
+pod 'AFNetworking'
+pod 'MJExtension'
+pod 'MJRefresh'
+pod 'SDWebImage'
+pod 'SDWebImage/GIF'
+pod 'Masonry'
+pod 'YYCache'
+pod 'KLCPopup'
+pod 'Toast'
+pod 'FMDB'
+end

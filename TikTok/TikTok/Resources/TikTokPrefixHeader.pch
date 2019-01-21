@@ -1,0 +1,17 @@
+//
+//  TikTokPrefixHeader.pch
+//  TikTok
+//
+//  Created by FaceBook on 2019/1/21.
+//  Copyright © 2019年 FaceBook. All rights reserved.
+//
+
+#ifndef TikTokPrefixHeader_pch
+#define TikTokPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "TTCommonConstant.h"
+#import "TTFilesManager.h"
+#import "TTColorDefines.h"
+#endif /* TikTokPrefixHeader_pch */
