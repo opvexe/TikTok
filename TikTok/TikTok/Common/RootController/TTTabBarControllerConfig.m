@@ -58,21 +58,21 @@
 - (NSArray *)tabBarItemsAttributesForController {
     NSDictionary *homeTabBarItemsAttributes = @{
                                                 CYLTabBarItemTitle : @"首页",
-                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -10.0f)]
+                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
                                                 };
     
     NSDictionary *attentionTabBarItemsAttributes = @{
                                                      CYLTabBarItemTitle : @"关注",
-                                                     CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -10.0f)]
+                                                     CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
                                                      };
     
     NSDictionary *messageTabBarItemsAttributes = @{
                                                    CYLTabBarItemTitle : @"消息",
-                                                   CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -10.0)]
+                                                   CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
                                                    };
     NSDictionary *mineTabBarItemsAttributes = @{
                                                 CYLTabBarItemTitle : @"我",
-                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -10.0f)]
+                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
                                                 };
     
     NSArray *tabBarItemsAttributes = @[
@@ -90,12 +90,12 @@
     ///普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
     normalAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-    normalAttrs[NSFontAttributeName] = [UIFont SYPingFangSCSemiboldFontOfSize:13.0f];
+    normalAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14.0f];
     
     // 选中状态下的文字属性
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    selectedAttrs[NSFontAttributeName] = [UIFont SYPingFangSCSemiboldFontOfSize:14.0f];
+    selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15.0f];
     
     // 设置文字属性
     UITabBarItem *tabBar = [UITabBarItem appearance];

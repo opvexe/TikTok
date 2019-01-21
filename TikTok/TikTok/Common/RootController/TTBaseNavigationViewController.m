@@ -18,7 +18,7 @@ UINavigationControllerDelegate
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
     UIImage *backgroundImage = nil;
     NSDictionary *textAttributes = nil;
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName, nil]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:16],NSFontAttributeName, nil]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [navigationBarAppearance setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBarAppearance setShadowImage:[UIImage new]];
@@ -28,18 +28,18 @@ UINavigationControllerDelegate
         [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -2) forBarMetrics:UIBarMetricsDefault];
     }
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-        backgroundImage = [UIImage imageWithColor:[UIColor blackColor]];
+        backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
         
         textAttributes = @{
-                           NSFontAttributeName :[UIFont SYHelveticaFontOfSize:14.0],
+                           NSFontAttributeName :[UIFont systemFontOfSize:14.0],
                            NSForegroundColorAttributeName :[UIColor whiteColor],
                            };
         
     } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-        backgroundImage = [UIImage imageWithColor:[UIColor blackColor]];
+        backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
         textAttributes = @{
-                           UITextAttributeFont : [UIFont SYHelveticaFontOfSize:14.0]),
+                           UITextAttributeFont : [UIFont systemFontOfSize:14.0]),
                            UITextAttributeTextColor :[UIColor whiteColor],
                            UITextAttributeTextShadowColor : [UIColor clearColor],
                            UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetZero],
