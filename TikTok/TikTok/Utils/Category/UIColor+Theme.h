@@ -35,5 +35,7 @@
  */
 +(UIColor *)TextSubTitleColor;
 
++(UIColor *)ColorWhiteAlpha20;
 
++(UIColor *)ColorWhiteAlpha60;
 @end

@@ -17,6 +17,9 @@
 		D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65D21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m */; };
 		D059B66221F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66121F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m */; };
 		D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */; };
+		D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66B21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m */; };
+		D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66E21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m */; };
+		D059B67321F71916004E4FC0 /* TTSlideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67221F71916004E4FC0 /* TTSlideTabBar.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -84,6 +87,12 @@
 		D059B66321F6FCBD004E4FC0 /* TTBaseCollectionViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseCollectionViewCellProtocol.h; sourceTree = "<group>"; };
 		D059B66421F6FD2E004E4FC0 /* TTBaseCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseCollectionReusableView.h; sourceTree = "<group>"; };
 		D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseCollectionReusableView.m; sourceTree = "<group>"; };
+		D059B66A21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		D059B66B21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		D059B66D21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTProfileHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		D059B66E21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTProfileHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		D059B67121F71916004E4FC0 /* TTSlideTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSlideTabBar.h; sourceTree = "<group>"; };
+		D059B67221F71916004E4FC0 /* TTSlideTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTSlideTabBar.m; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -211,6 +220,10 @@
 			children = (
 				D059B65C21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.h */,
 				D059B65D21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m */,
+				D059B66A21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.h */,
+				D059B66B21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m */,
+				D059B66D21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.h */,
+				D059B66E21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +238,15 @@
 				D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */,
 			);
 			path = BaseCollectionView;
+			sourceTree = "<group>";
+		};
+		D059B67021F718FA004E4FC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D059B67121F71916004E4FC0 /* TTSlideTabBar.h */,
+				D059B67221F71916004E4FC0 /* TTSlideTabBar.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D08A0BAA21F5661C00F8D7D9 = {
@@ -331,6 +353,7 @@
 		D08A0BEC21F5673A00F8D7D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D059B67021F718FA004E4FC0 /* View */,
 				D08A0C3521F5BDB600F8D7D9 /* Tool */,
 				D08A0C0C21F5686C00F8D7D9 /* Constant */,
 				D08A0BEE21F5685A00F8D7D9 /* Category */,
@@ -635,12 +658,14 @@
 				D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */,
 				D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */,
 				D08A0C1021F568C100F8D7D9 /* TTBaseNavigationViewController.m in Sources */,
+				D059B67321F71916004E4FC0 /* TTSlideTabBar.m in Sources */,
 				D08A0C2121F572EE00F8D7D9 /* TTBaseViewController.m in Sources */,
 				D08A0C0921F5685A00F8D7D9 /* Foundation+Log.m in Sources */,
 				D08A0C0521F5685A00F8D7D9 /* UIViewController+WDNavigatonBarAppearance.m in Sources */,
 				D08A0C1321F568DB00F8D7D9 /* TTTabBarControllerConfig.m in Sources */,
 				D08A0C0621F5685A00F8D7D9 /* UIImage+Zip.m in Sources */,
 				D08A0C2D21F5733B00F8D7D9 /* TTMineViewController.m in Sources */,
+				D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */,
 				D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
@@ -656,6 +681,7 @@
 				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
+				D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,
 				D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */,
 				D059B66221F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m in Sources */,

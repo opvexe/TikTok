@@ -68,5 +68,12 @@
     return [UIColor colorWithHex:0x777777];
 }
 
++(UIColor *)ColorWhiteAlpha20{
+    return ColorFromRGBA(255.0, 255.0, 255.0, 0.2);
+}
+
++(UIColor *)ColorWhiteAlpha60{
+    return ColorFromRGBA(255.0, 255.0, 255.0, 0.6);
+}
 
 @end

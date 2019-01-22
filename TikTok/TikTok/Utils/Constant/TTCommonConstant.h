@@ -95,7 +95,7 @@
 #define  TT_iPhoneX (SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f ? YES : NO)
 #define  TT_TabbarHeight                    (TT_iPhoneX ? (49.f+34.f) : 49.f)
 #define  TT_TabbarSafeBottomMargin          (TT_iPhoneX ? 34.f : 0.f)
-#define  NavBarHeight                       (iOS7 ? (AT_iPhoneX ? 88.f : 64.f) : 44.0)
+#define  NavBarHeight                       (iOS7 ? (TT_iPhoneX ? 88.f : 64.f) : 44.0)
 #define  TT_iPhoneXStatusBarHeight          (TT_iPhoneX ? 44.f : 0)
 #define  StatusBarHeight                    (iOS7 ? (TT_iPhoneX ? 44.f : 20.f) : 0.0)
 #define AutomaticallyAdjustsScrollViewInsetsNO(view) if (@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;}else{self.automaticallyAdjustsScrollViewInsets = NO;}
