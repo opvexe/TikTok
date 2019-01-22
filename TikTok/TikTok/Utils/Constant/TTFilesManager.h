@@ -39,5 +39,6 @@
 #import <Toast.h>
 #import <UIImageView+WebCache.h>
 #import <IQKeyboardManager.h>
+#import <UIButton+WebCache.h>
 
 #endif /* TTFilesManager_h */

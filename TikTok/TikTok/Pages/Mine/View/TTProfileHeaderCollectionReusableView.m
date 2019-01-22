@@ -50,7 +50,7 @@
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0.0f);
             make.bottom.mas_equalTo(0.0f);
-            make.top.mas_equalTo(35.0f+NavBarHeight);
+            make.top.mas_equalTo(40.0f+NavBarHeight);
         }];
         iv;
     });
@@ -78,7 +78,7 @@
         iv.layer.cornerRadius = 50.0f;
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(Number(15.0f));
-            make.top.mas_equalTo(40.0f+NavBarHeight);
+            make.top.mas_equalTo(30.0f+NavBarHeight);
             make.size.mas_equalTo(CGSizeMake(100.0f, 100.0f));
         }];
         iv;
@@ -335,7 +335,7 @@
             make.height.mas_equalTo(20.0f);
             make.width.mas_lessThanOrEqualTo(Number(120.0f));
             make.left.mas_equalTo(self.nickName);
-            make.top.mas_equalTo(self.age.mas_bottom).mas_offset(10.0f);
+            make.top.mas_equalTo(self.age.mas_bottom).mas_offset(15.0f);
         }];
         iv;
     });
@@ -357,7 +357,7 @@
             make.height.mas_equalTo(20.0f);
             make.width.mas_lessThanOrEqualTo(Number(120.0f));
             make.left.mas_equalTo(self.likeNum.mas_right).mas_offset(10.0f);
-            make.top.mas_equalTo(self.age.mas_bottom).mas_offset(10.0f);
+            make.top.mas_equalTo(self.likeNum);
         }];
         iv;
     });
@@ -379,7 +379,7 @@
             make.height.mas_equalTo(20.0f);
             make.width.mas_lessThanOrEqualTo(Number(120.0f));
             make.left.mas_equalTo(self.forceNum.mas_right).mas_offset(10.0f);
-            make.top.mas_equalTo(self.age.mas_bottom).mas_offset(10.0f);
+            make.top.mas_equalTo(self.likeNum);
         }];
         iv;
     });
@@ -410,7 +410,7 @@
 }
 
 - (void)scrollToTopAction:(CGFloat) offsetY {
-    CGFloat alphaRatio = offsetY/(370.0f - 44 - StatusBarHeight - TT_TabbarSafeBottomMargin);
+    CGFloat alphaRatio = offsetY/(370.0f - 44 - StatusBarHeight - TT_TabbarHeight);
     self.containerView.alpha = 1.0f - alphaRatio;
 }
 
