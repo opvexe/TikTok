@@ -7,12 +7,13 @@
 //
 
 #import "TTHomeViewController.h"
-
 @implementation TTHomeViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
 }
+
 
 @end

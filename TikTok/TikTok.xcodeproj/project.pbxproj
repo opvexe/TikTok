@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD29F15724BE494BC5C33550 /* libPods-TikTok.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E68C2798B1D78B1D028181A /* libPods-TikTok.a */; };
+		D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -56,6 +57,8 @@
 /* Begin PBXFileReference section */
 		093B1A2D34F4B29600135086 /* Pods-TikTok.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.debug.xcconfig"; sourceTree = "<group>"; };
 		5E68C2798B1D78B1D028181A /* libPods-TikTok.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TikTok.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonStyle.m"; sourceTree = "<group>"; };
+		D059B64821F6A81B004E4FC0 /* UIButton+ButtonStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ButtonStyle.h"; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 		D08A0C3521F5BDB600F8D7D9 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				D059B64821F6A81B004E4FC0 /* UIButton+ButtonStyle.h */,
+				D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */,
 				D08A0C3621F5BDC900F8D7D9 /* TTTools.h */,
 				D08A0C3721F5BDC900F8D7D9 /* TTTools.m */,
 			);
@@ -559,6 +564,7 @@
 				D08A0C1321F568DB00F8D7D9 /* TTTabBarControllerConfig.m in Sources */,
 				D08A0C0621F5685A00F8D7D9 /* UIImage+Zip.m in Sources */,
 				D08A0C2D21F5733B00F8D7D9 /* TTMineViewController.m in Sources */,
+				D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
 				D08A0C0B21F5685A00F8D7D9 /* UIFont+Category.m in Sources */,

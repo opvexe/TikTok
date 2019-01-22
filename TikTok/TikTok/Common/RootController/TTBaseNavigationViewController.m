@@ -28,7 +28,7 @@ UINavigationControllerDelegate
         [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -2) forBarMetrics:UIBarMetricsDefault];
     }
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-        backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
+        backgroundImage = [UIImage imageWithColor:[UIColor blackColor]];
         
         textAttributes = @{
                            NSFontAttributeName :[UIFont systemFontOfSize:14.0],
@@ -37,7 +37,7 @@ UINavigationControllerDelegate
         
     } else {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-        backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
+        backgroundImage = [UIImage imageWithColor:[UIColor blackColor]];
         textAttributes = @{
                            UITextAttributeFont : [UIFont systemFontOfSize:14.0]),
                            UITextAttributeTextColor :[UIColor whiteColor],
