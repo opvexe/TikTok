@@ -417,7 +417,7 @@
     _model = model;
     [self.topBackgroundImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pb3.pstatp.com/obj/dbc1001cd29ccc479f7f"] placeholderImage:[UIImage imageNamed:@"baixue"]];
     self.nickName.text = convertToString(model.nickname);
-    self.tikTokID.text = [NSString stringWithFormat:@"抖音:%@",convertToString(model.short_id)];
+    self.tikTokID.text = [NSString stringWithFormat:@"抖音: %@",convertToString(model.short_id)];
     [self.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
     self.brief.text = convertToString(model.signature);
     [self.age setTitle:[NSString stringWithFormat:@"0岁"] forState:UIControlStateNormal];

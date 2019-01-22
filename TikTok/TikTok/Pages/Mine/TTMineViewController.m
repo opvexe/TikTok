@@ -147,7 +147,46 @@ TTUserHeaderDelegate
 }
 
 - (void)clickUserWithType:(TTUserHeaderDidClickType )type withUser:(TTBaseModel *)model{
-    
+    switch (type) {
+        case TTUserHeaderDidClickTypeAvatar:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeSetting:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeAddsFriends:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeSendMessage:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeFocusAction:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeAboutMe:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeLikes:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeFocuse:{
+            
+        }
+            break;
+        case TTUserHeaderDidClickTypeFollowed:{
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
