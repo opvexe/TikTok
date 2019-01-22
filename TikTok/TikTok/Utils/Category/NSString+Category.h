@@ -261,4 +261,11 @@ NSString *DistanceConversion(NSString *distance);
  @return 文件大小
  */
 NSString *cacheSizeStr(NSInteger _totalSize);
+/**
+ * 获取本地数据
+
+ @param fileName 文件名称
+ @return 获取本地数据
+ */
++(NSDictionary *)readJson2DicWithFileName:(NSString *)fileName;
 @end

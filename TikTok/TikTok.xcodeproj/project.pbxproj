@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AD29F15724BE494BC5C33550 /* libPods-TikTok.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E68C2798B1D78B1D028181A /* libPods-TikTok.a */; };
+		C2358FB721F74B0200298E14 /* TTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2358FB621F74B0200298E14 /* TTUserModel.m */; };
+		C2358FB921F74B1F00298E14 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = C2358FB821F74B1F00298E14 /* user.json */; };
+		C2358FBB21F7577300298E14 /* awemes.json in Resources */ = {isa = PBXBuildFile; fileRef = C2358FBA21F7577300298E14 /* awemes.json */; };
 		D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */; };
 		D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */; };
 		D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65121F6D07B004E4FC0 /* TTBaseModel.m */; };
@@ -68,6 +71,10 @@
 /* Begin PBXFileReference section */
 		093B1A2D34F4B29600135086 /* Pods-TikTok.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.debug.xcconfig"; sourceTree = "<group>"; };
 		5E68C2798B1D78B1D028181A /* libPods-TikTok.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TikTok.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2358FB521F74B0200298E14 /* TTUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTUserModel.h; sourceTree = "<group>"; };
+		C2358FB621F74B0200298E14 /* TTUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTUserModel.m; sourceTree = "<group>"; };
+		C2358FB821F74B1F00298E14 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		C2358FBA21F7577300298E14 /* awemes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awemes.json; sourceTree = "<group>"; };
 		D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonStyle.m"; sourceTree = "<group>"; };
 		D059B64821F6A81B004E4FC0 /* UIButton+ButtonStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ButtonStyle.h"; sourceTree = "<group>"; };
 		D059B64B21F6CFE4004E4FC0 /* TTBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseView.h; sourceTree = "<group>"; };
@@ -196,6 +203,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C2358FB421F74AF100298E14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2358FB521F74B0200298E14 /* TTUserModel.h */,
+				C2358FB621F74B0200298E14 /* TTUserModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D059B64A21F6CFD7004E4FC0 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +321,8 @@
 		D08A0BE821F5669400F8D7D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2358FBA21F7577300298E14 /* awemes.json */,
+				C2358FB821F74B1F00298E14 /* user.json */,
 				D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */,
 				D08A0BED21F5678800F8D7D9 /* TikTokPrefixHeader.pch */,
 				D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */,
@@ -442,6 +460,7 @@
 		D08A0C1D21F572A100F8D7D9 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				C2358FB421F74AF100298E14 /* Model */,
 				D059B65B21F6FAEC004E4FC0 /* View */,
 				D08A0C2B21F5733B00F8D7D9 /* TTMineViewController.h */,
 				D08A0C2C21F5733B00F8D7D9 /* TTMineViewController.m */,
@@ -584,6 +603,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2358FB921F74B1F00298E14 /* user.json in Resources */,
+				C2358FBB21F7577300298E14 /* awemes.json in Resources */,
 				D059B65721F6E6D4004E4FC0 /* Launch Screen.storyboard in Resources */,
 				D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */,
 			);
@@ -680,6 +701,7 @@
 				D059B65A21F6F766004E4FC0 /* AppDelegate+Category.m in Sources */,
 				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
+				C2358FB721F74B0200298E14 /* TTUserModel.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,

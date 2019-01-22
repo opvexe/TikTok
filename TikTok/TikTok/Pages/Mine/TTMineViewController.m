@@ -10,7 +10,7 @@
 #import "TTHoverViewFlowLayout.h"
 #import "TTProfileCollectionViewCell.h"
 #import "TTProfileHeaderCollectionReusableView.h"
-
+#import "TTUserModel.h"
 #define TTHeaderHeight          350 + NavBarHeight
 #define kSlideTabBarHeight      40
 @interface TTMineViewController ()
@@ -19,10 +19,12 @@ UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
 UIScrollViewDelegate,
-TTSlideTabBarDelegate
+TTSlideTabBarDelegate,
+TTUserHeaderDelegate
 >
 @property(nonatomic,strong)UICollectionView *profileCollectionView;
 @property(nonatomic,strong)TTProfileHeaderCollectionReusableView *Header;
+@property(nonatomic,strong)TTUserModel *userModel;
 @property(nonatomic,assign)NSInteger  tabIndex;
 @property(nonatomic,strong)NSMutableArray *lists;
 @end
@@ -41,6 +43,7 @@ TTSlideTabBarDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configView];
+    [self refreshLoadDataSoucre];
 }
 
 -(void)configView{
@@ -71,7 +74,22 @@ TTSlideTabBarDelegate
         }];
         iv;
     });
+}
+
+-(void)refreshLoadDataSoucre{
     
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary *user =  [NSString readJson2DicWithFileName:@"user"];
+        self.userModel = [TTUserModel mj_objectWithKeyValues:user[@"data"]];
+    });
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+    });
+
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.profileCollectionView reloadData];
+    });
 }
 
 #pragma mark <UICollectionViewCellDelegate>
@@ -110,15 +128,14 @@ TTSlideTabBarDelegate
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    UICollectionReusableView *reusable = nil;
     if (kind == UICollectionElementKindSectionHeader) {
         TTProfileHeaderCollectionReusableView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([TTProfileHeaderCollectionReusableView class]) forIndexPath:indexPath];
         reusableView.slideTabBar.delegate = self;
-        
+        [reusableView InitDataWithModel:_userModel];
         _Header = reusableView;
-        reusable = reusableView;
+        return reusableView;
     }
-    return reusable;
+    return [UICollectionReusableView new];
 }
 
 #pragma mark TTSlideTabBarDelegate
@@ -126,9 +143,12 @@ TTSlideTabBarDelegate
     if(_tabIndex == index){
         return;
     }
-    NSLog(@"%ld",index);
+
 }
 
+- (void)clickUserWithType:(TTUserHeaderDidClickType )type withUser:(TTBaseModel *)model{
+    
+}
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
@@ -136,7 +156,7 @@ TTSlideTabBarDelegate
         [_Header overScrollAction:offsetY];
     }else {
         [_Header scrollToTopAction:offsetY];
-//        [self updateNavigationTitle:offsetY];
+        //        [self updateNavigationTitle:offsetY];
     }
 }
 

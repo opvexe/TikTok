@@ -12,6 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TTBaseModel : NSObject
 
+@property(nonatomic,copy)NSString *ID;
+
+@property(nonatomic,copy)NSString *ClassName;
+
+@property(nonatomic,copy)NSString *CellClass;
+
+@property(nonatomic,strong)NSArray *sections;
+
 @end
 
 NS_ASSUME_NONNULL_END
