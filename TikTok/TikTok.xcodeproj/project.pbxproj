@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AD29F15724BE494BC5C33550 /* libPods-TikTok.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E68C2798B1D78B1D028181A /* libPods-TikTok.a */; };
 		D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */; };
+		D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */; };
+		D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65121F6D07B004E4FC0 /* TTBaseModel.m */; };
+		D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */; };
+		D059B65721F6E6D4004E4FC0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -59,6 +63,14 @@
 		5E68C2798B1D78B1D028181A /* libPods-TikTok.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TikTok.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonStyle.m"; sourceTree = "<group>"; };
 		D059B64821F6A81B004E4FC0 /* UIButton+ButtonStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ButtonStyle.h"; sourceTree = "<group>"; };
+		D059B64B21F6CFE4004E4FC0 /* TTBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseView.h; sourceTree = "<group>"; };
+		D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseView.m; sourceTree = "<group>"; };
+		D059B64E21F6D02E004E4FC0 /* TTBaseViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseViewProtocol.h; sourceTree = "<group>"; };
+		D059B65021F6D07B004E4FC0 /* TTBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseModel.h; sourceTree = "<group>"; };
+		D059B65121F6D07B004E4FC0 /* TTBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseModel.m; sourceTree = "<group>"; };
+		D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTRightItemView.h; sourceTree = "<group>"; };
+		D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTRightItemView.m; sourceTree = "<group>"; };
+		D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -162,6 +174,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D059B64A21F6CFD7004E4FC0 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				D059B64B21F6CFE4004E4FC0 /* TTBaseView.h */,
+				D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */,
+				D059B64E21F6D02E004E4FC0 /* TTBaseViewProtocol.h */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		D059B64F21F6D067004E4FC0 /* BaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				D059B65021F6D07B004E4FC0 /* TTBaseModel.h */,
+				D059B65121F6D07B004E4FC0 /* TTBaseModel.m */,
+			);
+			path = BaseModel;
+			sourceTree = "<group>";
+		};
 		D08A0BAA21F5661C00F8D7D9 = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +251,7 @@
 			children = (
 				D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */,
 				D08A0BED21F5678800F8D7D9 /* TikTokPrefixHeader.pch */,
+				D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -251,6 +283,8 @@
 		D08A0BEB21F5671E00F8D7D9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D059B64F21F6D067004E4FC0 /* BaseModel */,
+				D059B64A21F6CFD7004E4FC0 /* BaseView */,
 				D08A0C1E21F572D600F8D7D9 /* BaseController */,
 				D08A0C0D21F568A500F8D7D9 /* RootController */,
 			);
@@ -339,6 +373,8 @@
 			children = (
 				D08A0C2221F5730F00F8D7D9 /* TTHomeViewController.h */,
 				D08A0C2321F5730F00F8D7D9 /* TTHomeViewController.m */,
+				D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */,
+				D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -487,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D059B65721F6E6D4004E4FC0 /* Launch Screen.storyboard in Resources */,
 				D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +604,8 @@
 				D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
+				D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */,
+				D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */,
 				D08A0C0B21F5685A00F8D7D9 /* UIFont+Category.m in Sources */,
 				D08A0C3421F594E700F8D7D9 /* TTPublishViewController.m in Sources */,
 				D08A0C0821F5685A00F8D7D9 /* UIView+WDBlocksKit.m in Sources */,
@@ -577,6 +616,7 @@
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,
+				D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,7 +769,6 @@
 			baseConfigurationReference = 093B1A2D34F4B29600135086 /* Pods-TikTok.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NJC3EGBWR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TikTok/Resources/TikTokPrefixHeader.pch";
@@ -750,7 +789,6 @@
 			baseConfigurationReference = F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NJC3EGBWR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TikTok/Resources/TikTokPrefixHeader.pch";

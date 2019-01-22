@@ -89,13 +89,13 @@
     
     ///普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
-    normalAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-    normalAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14.0f];
+    normalAttrs[NSForegroundColorAttributeName] = [UIColor TextGrayColor];
+    normalAttrs[NSFontAttributeName] = [UIFont SYPingFangSCSemiboldFontOfSize:16.0f];
     
     // 选中状态下的文字属性
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    selectedAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15.0f];
+    selectedAttrs[NSFontAttributeName] = [UIFont SYPingFangSCSemiboldFontOfSize:18.0f];
     
     // 设置文字属性
     UITabBarItem *tabBar = [UITabBarItem appearance];

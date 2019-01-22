@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lDt-Ta-vdD"/>
+                        <viewControllerLayoutGuide type="bottom" id="abH-RT-25e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrK-qk-DGI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="eap-gz-Y3V">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="rfI-9W-OAi">
+                                        <rect key="frame" x="128.5" y="233" width="118" height="201"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="201" id="Yee-pM-Sjm"/>
+                                            <constraint firstAttribute="width" constant="118" id="rgI-xp-plI"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="eap-gz-Y3V" firstAttribute="leading" secondItem="nrK-qk-DGI" secondAttribute="leading" id="1xn-YG-VGV"/>
+                                    <constraint firstAttribute="bottom" secondItem="eap-gz-Y3V" secondAttribute="bottom" id="6WY-1l-qLb"/>
+                                    <constraint firstItem="rfI-9W-OAi" firstAttribute="centerX" secondItem="nrK-qk-DGI" secondAttribute="centerX" id="DsD-yz-c8X"/>
+                                    <constraint firstItem="eap-gz-Y3V" firstAttribute="top" secondItem="nrK-qk-DGI" secondAttribute="top" id="Vls-HX-usw"/>
+                                    <constraint firstAttribute="trailing" secondItem="eap-gz-Y3V" secondAttribute="trailing" id="dAo-dt-hP4"/>
+                                    <constraint firstItem="rfI-9W-OAi" firstAttribute="centerY" secondItem="nrK-qk-DGI" secondAttribute="centerY" id="glG-cJ-dwf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nrK-qk-DGI" secondAttribute="trailing" id="8zf-f1-kJs"/>
+                            <constraint firstItem="nrK-qk-DGI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BG7-pm-j5Y"/>
+                            <constraint firstItem="nrK-qk-DGI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="j7G-uk-l53"/>
+                            <constraint firstItem="abH-RT-25e" firstAttribute="top" secondItem="nrK-qk-DGI" secondAttribute="bottom" id="v7m-0q-pYa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49.275362318840585" y="372.32142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_splash_logo" width="118" height="201"/>
+        <image name="launchImage" width="375" height="667"/>
+    </resources>
+</document>

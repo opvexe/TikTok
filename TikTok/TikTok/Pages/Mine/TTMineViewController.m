@@ -7,7 +7,18 @@
 //
 
 #import "TTMineViewController.h"
+@interface TTMineViewController ()
 
+@end
 @implementation TTMineViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configView];
+}
+
+-(void)configView{
+    
+    
+}
 @end

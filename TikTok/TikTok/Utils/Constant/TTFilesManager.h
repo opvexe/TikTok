@@ -21,6 +21,7 @@
 #import "UIView+Category.h"
 #import "UIFont+Category.h"
 #import "UIColor+Theme.h"
+#import "UIButton+ButtonStyle.h"
 #import "UIImage+ScaleImage.h"
 #import "UIView+WDBlocksKit.h"
 #import "UIGestureRecognizer+WDExtension.h"

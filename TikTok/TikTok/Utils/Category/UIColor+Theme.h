@@ -13,35 +13,27 @@
 /**
  * 随机色
  */
-+(UIColor *)AT_ColorRandom;
-
++(UIColor *)SYColorRandom;
 /**
  *  主色调
  */
-+(UIColor *)AT_MainColor;
-/**
- *  整体背景颜色
- */
-+(UIColor *)AT_BgColor;
++(UIColor *)MainColor;
 /**
  * 辅助线颜色
  */
-+(UIColor *)AT_BgLineColor;
++(UIColor *)BgLineColor;
 /**
  *  主文字颜色
  */
-+(UIColor *)AT_TextColor;
++(UIColor *)TextColor;
 /**
  *  文字辅助灰色颜色
  */
-+(UIColor *)AT_TextGrayColor;
++(UIColor *)TextGrayColor;
 /**
  *  文字副标题颜色
  */
-+(UIColor *)AT_TextSubTitleColor;
-/**
- *  TableView整体背景颜色
- */
-+(UIColor *)AT_BgTableViewColor;
++(UIColor *)TextSubTitleColor;
+
 
 @end

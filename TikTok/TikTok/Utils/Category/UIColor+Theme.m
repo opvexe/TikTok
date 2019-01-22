@@ -27,7 +27,7 @@
 /**
  * 随机色
  */
-+(UIColor *)AT_ColorRandom{
++(UIColor *)SYColorRandom{
     return [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
 }
 
@@ -35,49 +35,38 @@
 /**
  *  主色调
  */
-+(UIColor *)AT_MainColor{
++(UIColor *)MainColor{
     return [UIColor colorWithHex:0x51ac33];
-}
-/**
- *  整体背景颜色
- */
-+(UIColor *)AT_BgColor {
-    return [UIColor colorWithHex:0xffffff];
 }
 
 
 /**
  * 辅助线颜色
  */
-+(UIColor *)AT_BgLineColor{
++(UIColor *)BgLineColor{
     return [UIColor colorWithHex:0xe1e1e1];
 }
 
 /**
  *  主文字颜色
  */
-+(UIColor *)AT_TextColor{ 
++(UIColor *)TextColor{
     return [UIColor colorWithHex:0x646464];
 }
 
 /**
  *  文字副标题颜色
  */
-+(UIColor *)AT_TextSubTitleColor{
++(UIColor *)TextSubTitleColor{
     return [UIColor colorWithHex:0x999999];
 }
 
 /**
  *  文字辅助灰色颜色
  */
-+(UIColor *)AT_TextGrayColor{
++(UIColor *)TextGrayColor{
     return [UIColor colorWithHex:0x777777];
 }
 
-/**
- *  TableView整体背景颜色
- */
-+(UIColor *)AT_BgTableViewColor{
-    return [UIColor colorWithHex:0xf4f4f4];
-}
+
 @end

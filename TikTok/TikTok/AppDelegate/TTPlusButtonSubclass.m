@@ -48,30 +48,37 @@
 
 + (id)plusButton {
     TTPlusButtonSubclass *button = [[TTPlusButtonSubclass alloc] init];
-    UIImage *normalButtonImage = [UIImage imageNamed:@"post_highlight"];
-    UIImage *hlightButtonImage = [UIImage imageNamed:@"post_highlight"];
-    [button setImage:normalButtonImage forState:UIControlStateNormal];
-    [button setImage:hlightButtonImage forState:UIControlStateSelected];
-    button.frame = CGRectMake(0.0, 0.0, 55, 59);
-    [button addTarget:button action:@selector(clickPublish) forControlEvents:UIControlEventTouchUpInside];
+    [button setImage:[UIImage imageNamed:@"btn_home_add"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"btn_home_add"] forState:UIControlStateHighlighted];
+    [button setImage:[UIImage imageNamed:@"btn_home_add"] forState:UIControlStateSelected];
+    [button setImage:[UIImage imageNamed:@"btn_home_add"] forState:UIControlStateDisabled];
+    button.frame = CGRectMake(0.0, 0.0, 44.0f, 34.0f);
+    [button addTarget:button action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
 
-- (void)clickPublish {
-    CYLTabBarController *tabBarController = [self cyl_tabBarController];
-    UIViewController *viewController = tabBarController.selectedViewController;
-    TTPublishViewController *pushVC = [[TTPublishViewController alloc]init];
-    pushVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    TTBaseNavigationViewController *pushNavgationController = [[TTBaseNavigationViewController alloc] initWithRootViewController:pushVC];
-    [viewController presentViewController:pushNavgationController animated:YES completion:nil];
+- (void)Click:(UIButton *)sender{
+    [UIView animateWithDuration:0.20 animations:^{
+        sender.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    } completion:^(BOOL finished) {
+        sender.transform = CGAffineTransformIdentity;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            CYLTabBarController *tabBarController = [self cyl_tabBarController];
+            UIViewController *viewController = tabBarController.selectedViewController;
+            TTPublishViewController *pushVC = [[TTPublishViewController alloc]init];
+            pushVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            TTBaseNavigationViewController *pushNavgationController = [[TTBaseNavigationViewController alloc] initWithRootViewController:pushVC];
+            [viewController presentViewController:pushNavgationController animated:YES completion:nil];
+        });
+    }];
 }
 
 + (CGFloat)multiplierOfTabBarHeight:(CGFloat)tabBarHeight {
-    return  0.3;
+    return  0.5;
 }
 
 + (CGFloat)constantOfPlusButtonCenterYOffsetForTabBarHeight:(CGFloat)tabBarHeight {
-    return  -10;
+    return  0.0f;
 }
 
 @end
