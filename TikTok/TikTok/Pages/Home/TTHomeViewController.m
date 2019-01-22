@@ -26,6 +26,7 @@
     
     
 }
+
 -(void)settingNativeItemsView{
     
     _segment = ({

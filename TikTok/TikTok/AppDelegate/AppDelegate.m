@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "TTTabBarControllerConfig.h"
 #import "TTPlusButtonSubclass.h"
+#import "AppDelegate+Category.h"
 @interface AppDelegate ()
 
 @end
@@ -19,9 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     [TTPlusButtonSubclass registerPlusButton];
-    TTTabBarControllerConfig  *tabBarControllerConfig = [TTTabBarControllerConfig new];
-    self.window.rootViewController = tabBarControllerConfig.tabBarController;
+    
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 10;
+    [IQKeyboardManager sharedManager].shouldShowToolbarPlaceholder = NO;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    
+    [self switchRootController];
     [self.window makeKeyAndVisible];
     
     return YES;

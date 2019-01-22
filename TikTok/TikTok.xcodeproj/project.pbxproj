@@ -13,6 +13,10 @@
 		D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65121F6D07B004E4FC0 /* TTBaseModel.m */; };
 		D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */; };
 		D059B65721F6E6D4004E4FC0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */; };
+		D059B65A21F6F766004E4FC0 /* AppDelegate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65921F6F766004E4FC0 /* AppDelegate+Category.m */; };
+		D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B65D21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m */; };
+		D059B66221F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66121F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m */; };
+		D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -71,6 +75,15 @@
 		D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTRightItemView.h; sourceTree = "<group>"; };
 		D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTRightItemView.m; sourceTree = "<group>"; };
 		D059B65621F6E6D4004E4FC0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D059B65821F6F766004E4FC0 /* AppDelegate+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Category.h"; sourceTree = "<group>"; };
+		D059B65921F6F766004E4FC0 /* AppDelegate+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Category.m"; sourceTree = "<group>"; };
+		D059B65C21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTHoverViewFlowLayout.h; sourceTree = "<group>"; };
+		D059B65D21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTHoverViewFlowLayout.m; sourceTree = "<group>"; };
+		D059B66021F6FC6C004E4FC0 /* TTBaseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		D059B66121F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		D059B66321F6FCBD004E4FC0 /* TTBaseCollectionViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseCollectionViewCellProtocol.h; sourceTree = "<group>"; };
+		D059B66421F6FD2E004E4FC0 /* TTBaseCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseCollectionReusableView.h; sourceTree = "<group>"; };
+		D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseCollectionReusableView.m; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -193,6 +206,27 @@
 			path = BaseModel;
 			sourceTree = "<group>";
 		};
+		D059B65B21F6FAEC004E4FC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D059B65C21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.h */,
+				D059B65D21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D059B65F21F6FC55004E4FC0 /* BaseCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				D059B66021F6FC6C004E4FC0 /* TTBaseCollectionViewCell.h */,
+				D059B66121F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m */,
+				D059B66321F6FCBD004E4FC0 /* TTBaseCollectionViewCellProtocol.h */,
+				D059B66421F6FD2E004E4FC0 /* TTBaseCollectionReusableView.h */,
+				D059B66521F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m */,
+			);
+			path = BaseCollectionView;
+			sourceTree = "<group>";
+		};
 		D08A0BAA21F5661C00F8D7D9 = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +295,8 @@
 			children = (
 				D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */,
 				D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */,
+				D059B65821F6F766004E4FC0 /* AppDelegate+Category.h */,
+				D059B65921F6F766004E4FC0 /* AppDelegate+Category.m */,
 				D08A0C2E21F5940A00F8D7D9 /* TTPlusButtonSubclass.h */,
 				D08A0C2F21F5940A00F8D7D9 /* TTPlusButtonSubclass.m */,
 				D08A0BC521F5661D00F8D7D9 /* main.m */,
@@ -283,6 +319,7 @@
 		D08A0BEB21F5671E00F8D7D9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D059B65F21F6FC55004E4FC0 /* BaseCollectionView */,
 				D059B64F21F6D067004E4FC0 /* BaseModel */,
 				D059B64A21F6CFD7004E4FC0 /* BaseView */,
 				D08A0C1E21F572D600F8D7D9 /* BaseController */,
@@ -382,6 +419,7 @@
 		D08A0C1D21F572A100F8D7D9 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D059B65B21F6FAEC004E4FC0 /* View */,
 				D08A0C2B21F5733B00F8D7D9 /* TTMineViewController.h */,
 				D08A0C2C21F5733B00F8D7D9 /* TTMineViewController.m */,
 			);
@@ -592,8 +630,10 @@
 			files = (
 				D08A0BC621F5661D00F8D7D9 /* main.m in Sources */,
 				D08A0C2421F5730F00F8D7D9 /* TTHomeViewController.m in Sources */,
+				D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */,
 				D08A0C0A21F5685A00F8D7D9 /* UIGestureRecognizer+WDExtension.m in Sources */,
 				D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */,
+				D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */,
 				D08A0C1021F568C100F8D7D9 /* TTBaseNavigationViewController.m in Sources */,
 				D08A0C2121F572EE00F8D7D9 /* TTBaseViewController.m in Sources */,
 				D08A0C0921F5685A00F8D7D9 /* Foundation+Log.m in Sources */,
@@ -612,11 +652,13 @@
 				D08A0C0221F5685A00F8D7D9 /* UIImage+ScaleImage.m in Sources */,
 				D08A0C2721F5732300F8D7D9 /* TTAttentionViewController.m in Sources */,
 				D08A0C0321F5685A00F8D7D9 /* UIView+Category.m in Sources */,
+				D059B65A21F6F766004E4FC0 /* AppDelegate+Category.m in Sources */,
 				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,
 				D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */,
+				D059B66221F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

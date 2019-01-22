@@ -38,5 +38,6 @@
 #import <YYCache.h>
 #import <Toast.h>
 #import <UIImageView+WebCache.h>
+#import <IQKeyboardManager.h>
 
 #endif /* TTFilesManager_h */
