@@ -7,20 +7,23 @@
 //
 
 #import "TTHomeTableViewCell.h"
+#import "TTMusicAlbumView.h"
+#import "TTPlayerView.h"
 #import "TTUserModel.h"
 @interface TTHomeTableViewCell()<SDCycleScrollViewDelegate>
 @property(nonatomic,strong)UIView *container;
-@property(nonatomic,strong)UIView *playerView;
+@property(nonatomic,strong)TTPlayerView *playerView;
 @property(nonatomic,strong)UIButton *avator;
 @property(nonatomic,strong)UIButton *likes;
 @property(nonatomic,strong)UIButton *comment;
 @property(nonatomic,strong)UIButton *shared;
-@property(nonatomic,strong)UIView *music;
+@property(nonatomic,strong)TTMusicAlbumView *albumView;
 @property(nonatomic,strong)UILabel *nickName;
 @property(nonatomic,strong)UILabel *desc;
 @property(nonatomic,strong)SDCycleScrollView *cycleSrollView;
 @property(nonatomic,strong)FLAnimatedImageView *musicIcon;
 @property(nonatomic,strong)UIButton *pause;
+@property(nonatomic,strong)TTAwemeModel *model;
 @end
 @implementation TTHomeTableViewCell
 
@@ -36,7 +39,7 @@
 -(void)TTSinitConfingViews{
     
     _playerView = ({
-        UIView *iv = [[UIView alloc]init];
+        TTPlayerView *iv = [[TTPlayerView alloc]init];
         iv.backgroundColor = [UIColor blackColor];
         [self.contentView addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,9 +180,8 @@
     });
     
     
-    _music = ({
-        UIView *iv = [[UIView alloc]init];
-        iv.backgroundColor = [UIColor yellowColor];
+    _albumView = ({
+        TTMusicAlbumView *iv = [[TTMusicAlbumView alloc]init];
         [self.container addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.avator);
@@ -251,8 +253,8 @@
         }];
         iv;
     });
-    
 }
+
 
 -(void)Click:(UIButton *)sender{
     
@@ -260,6 +262,15 @@
 }
 
 -(void)InitDataWithModel:(TTAwemeModel *)model{
+    _model = model;
+    self.desc.text = model.desc;
+    self.nickName.text = [NSString stringWithFormat:@"@ %@",model.author.nickname];
+    [self.comment setTitle:model.statistics.comment_count forState:UIControlStateNormal];
+    [self.shared setTitle:model.statistics.share_count forState:UIControlStateNormal];
+    [self.likes setTitle:model.statistics.digg_count forState:UIControlStateNormal];
+    [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
+    self.albumView.albumURL = model.music.cover_thumb.url_list.firstObject;
+    [self.albumView startAnimation:model.rate];
     
     NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
     [urls addObject:[NSString stringWithFormat:@"%@ - %@", model.music.title, model.music.author]];
@@ -267,13 +278,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.cycleSrollView.titlesGroup = urls;
     });
-    
-    self.desc.text = model.desc;
-    self.nickName.text = [NSString stringWithFormat:@"@ %@",model.author.nickname];
-    [self.comment setTitle:model.statistics.comment_count forState:UIControlStateNormal];
-    [self.shared setTitle:model.statistics.share_count forState:UIControlStateNormal];
-    [self.likes setTitle:model.statistics.digg_count forState:UIControlStateNormal];
-    [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
 }
 
 

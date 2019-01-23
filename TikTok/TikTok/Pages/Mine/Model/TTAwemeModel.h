@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)TTAwemeMusicModel *music;
 
 @property(nonatomic,copy)NSString *desc;
+
+@property(nonatomic,assign)CGFloat rate;
 @end
 
 

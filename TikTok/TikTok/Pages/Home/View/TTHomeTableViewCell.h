@@ -10,6 +10,15 @@
 #import "TTAwemeModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, TTPlayerTableClickType) {
+    TTPlayerTableClickTypePause,
+    TTPlayerTableClickTypeAvator,
+    TTPlayerTableClickTypeLikes,
+    TTPlayerTableClickTypeComment,
+    TTPlayerTableClickTypeShare,
+    TTPlayerTableClickTypeNickName,
+};
+
 @interface TTHomeTableViewCell : TTBaseTableViewCell
 
 @end

@@ -101,7 +101,6 @@ static NSInteger pageIndex;
         return;
     }
     
-<<<<<<< Updated upstream
     _tabIndex = index;
     pageIndex = 0;
     
@@ -166,13 +165,6 @@ static NSInteger pageIndex;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
-}
-#pragma mark TTSlideTabBarDelegate
-- (void)onTabTapAction:(NSInteger)index{
-    if(_tabIndex == index){
-        return;
-    }
-    
 }
 
 
