@@ -366,7 +366,7 @@
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(20.0f);
             make.width.mas_lessThanOrEqualTo(Number(120.0f));
-            make.left.mas_equalTo(self.likeNum.mas_right).mas_offset(10.0f);
+            make.left.mas_equalTo(self.likeNum.mas_right).mas_offset(20.0f);
             make.top.mas_equalTo(self.likeNum);
         }];
         iv;
@@ -389,7 +389,7 @@
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(20.0f);
             make.width.mas_lessThanOrEqualTo(Number(120.0f));
-            make.left.mas_equalTo(self.forceNum.mas_right).mas_offset(10.0f);
+            make.left.mas_equalTo(self.forceNum.mas_right).mas_offset(20.0f);
             make.top.mas_equalTo(self.likeNum);
         }];
         iv;
