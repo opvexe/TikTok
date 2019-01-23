@@ -92,7 +92,7 @@
 /**
  *  iPhoneX
  */
-#define  TT_iPhoneX (SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f ? YES : NO)
+#define  TT_iPhoneX                         (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
 #define  TT_TabbarHeight                    (TT_iPhoneX ? (49.f+34.f) : 49.f)
 #define  TT_TabbarSafeBottomMargin          (TT_iPhoneX ? 34.f : 0.f)
 #define  NavBarHeight                       (iOS7 ? (TT_iPhoneX ? 88.f : 64.f) : 44.0)

@@ -7,7 +7,7 @@
 //
 
 #import "TTRootViewController.h"
-
+#import "TTHomeViewController.h"
 @interface TTRootViewController ()
 <
 UITabBarControllerDelegate,

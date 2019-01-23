@@ -7,7 +7,6 @@
 //
 
 #import "TTProfileHeaderCollectionReusableView.h"
-#import "TTUserModel.h"
 @interface TTProfileHeaderCollectionReusableView()
 @property(nonatomic,strong)UIImageView *topBackgroundImageView;
 @property(nonatomic,strong)UIView *containerView;
@@ -60,7 +59,8 @@
         UIView *iv = [[UIView alloc]init];
         [self addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self);
+            make.left.right.top.mas_equalTo(0.0f);
+            make.bottom.mas_equalTo(-44.0f);
         }];
         iv;
     });
@@ -397,7 +397,7 @@
     
     _slideTabBar = ({
         TTSlideTabBar *iv = [[TTSlideTabBar alloc]initWithFrame:CGRectZero];
-        [self.containerView addSubview:iv];
+        [self addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(40);
             make.left.right.bottom.equalTo(self);
@@ -415,7 +415,7 @@
 
 - (void)InitDataWithModel:(TTUserModel *)model{
     _model = model;
-    [self.topBackgroundImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pb3.pstatp.com/obj/dbc1001cd29ccc479f7f"] placeholderImage:[UIImage imageNamed:@"baixue"]];
+    [self.topBackgroundImageView sd_setImageWithURL:[NSURL URLWithString:model.cover_thumb] placeholderImage:[UIImage imageNamed:@"baixue"]];
     self.nickName.text = convertToString(model.nickname);
     self.tikTokID.text = [NSString stringWithFormat:@"抖音: %@",convertToString(model.short_id)];
     [self.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];

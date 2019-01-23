@@ -8,6 +8,7 @@
 
 #import "TTBaseCollectionReusableView.h"
 #import "TTSlideTabBar.h"
+#import "TTUserModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, TTUserHeaderDidClickType) {

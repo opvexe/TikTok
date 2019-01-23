@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,35 +14,31 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lDt-Ta-vdD"/>
-                        <viewControllerLayoutGuide type="bottom" id="abH-RT-25e"/>
+                        <viewControllerLayoutGuide type="top" id="ksH-TG-0Ed"/>
+                        <viewControllerLayoutGuide type="bottom" id="JLs-Lo-cCu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrK-qk-DGI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="eap-gz-Y3V">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-1V-Amm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="rfI-9W-OAi">
-                                        <rect key="frame" x="128.5" y="233" width="118" height="201"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="201" id="Yee-pM-Sjm"/>
-                                            <constraint firstAttribute="width" constant="118" id="rgI-xp-plI"/>
-                                        </constraints>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gd5-Ol-oXZ">
+                                        <rect key="frame" x="147.66666666666666" y="330.66666666666669" width="118.99999999999997" height="201.00000000000006"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="eap-gz-Y3V" firstAttribute="leading" secondItem="nrK-qk-DGI" secondAttribute="leading" id="1xn-YG-VGV"/>
-                                    <constraint firstAttribute="bottom" secondItem="eap-gz-Y3V" secondAttribute="bottom" id="6WY-1l-qLb"/>
-                                    <constraint firstItem="rfI-9W-OAi" firstAttribute="centerX" secondItem="nrK-qk-DGI" secondAttribute="centerX" id="DsD-yz-c8X"/>
-                                    <constraint firstItem="eap-gz-Y3V" firstAttribute="top" secondItem="nrK-qk-DGI" secondAttribute="top" id="Vls-HX-usw"/>
-                                    <constraint firstAttribute="trailing" secondItem="eap-gz-Y3V" secondAttribute="trailing" id="dAo-dt-hP4"/>
-                                    <constraint firstItem="rfI-9W-OAi" firstAttribute="centerY" secondItem="nrK-qk-DGI" secondAttribute="centerY" id="glG-cJ-dwf"/>
+                                    <constraint firstItem="6ps-1V-Amm" firstAttribute="top" secondItem="nrK-qk-DGI" secondAttribute="top" id="EiE-FR-AHv"/>
+                                    <constraint firstItem="Gd5-Ol-oXZ" firstAttribute="centerY" secondItem="nrK-qk-DGI" secondAttribute="centerY" id="Fiz-aa-bto"/>
+                                    <constraint firstAttribute="bottom" secondItem="6ps-1V-Amm" secondAttribute="bottom" constant="-34" id="Jmz-WQ-LT1"/>
+                                    <constraint firstItem="6ps-1V-Amm" firstAttribute="leading" secondItem="nrK-qk-DGI" secondAttribute="leading" id="THt-3O-qUo"/>
+                                    <constraint firstAttribute="trailing" secondItem="6ps-1V-Amm" secondAttribute="trailing" id="V6F-yh-QKi"/>
+                                    <constraint firstItem="Gd5-Ol-oXZ" firstAttribute="centerX" secondItem="nrK-qk-DGI" secondAttribute="centerX" id="z0h-LS-Eqs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -51,17 +47,17 @@
                             <constraint firstAttribute="trailing" secondItem="nrK-qk-DGI" secondAttribute="trailing" id="8zf-f1-kJs"/>
                             <constraint firstItem="nrK-qk-DGI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BG7-pm-j5Y"/>
                             <constraint firstItem="nrK-qk-DGI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="j7G-uk-l53"/>
-                            <constraint firstItem="abH-RT-25e" firstAttribute="top" secondItem="nrK-qk-DGI" secondAttribute="bottom" id="v7m-0q-pYa"/>
+                            <constraint firstAttribute="bottom" secondItem="nrK-qk-DGI" secondAttribute="bottom" constant="34" id="v7m-0q-pYa"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49.275362318840585" y="372.32142857142856"/>
+            <point key="canvasLocation" x="48.799999999999997" y="371.67487684729065"/>
         </scene>
     </scenes>
     <resources>
-        <image name="icon_splash_logo" width="118" height="201"/>
-        <image name="launchImage" width="375" height="667"/>
+        <image name="icon_splash_logo" width="119" height="201"/>
+        <image name="launchImage" width="375" height="664"/>
     </resources>
 </document>

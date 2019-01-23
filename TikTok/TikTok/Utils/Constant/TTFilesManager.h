@@ -40,5 +40,7 @@
 #import <UIImageView+WebCache.h>
 #import <IQKeyboardManager.h>
 #import <UIButton+WebCache.h>
+#import <FLAnimatedImageView+WebCache.h>
+#import <SDCycleScrollView.h>
 
 #endif /* TTFilesManager_h */

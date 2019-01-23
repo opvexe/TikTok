@@ -10,6 +10,10 @@
 
 @implementation TTUserModel
 
++(NSDictionary*)mj_objectClassInArray{
+    return @{@"avatar_medium":@"TTUserAvatarModel"};
+}
+
 @end
 
 

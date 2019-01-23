@@ -55,6 +55,37 @@ UIGestureRecognizerDelegate
     self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:navigationleftView];
 }
 
+- (void) setNavigationBarTitle:(NSString *)title {
+    self.navigationItem.title = title;
+}
+
+- (void) setNavigationBarTitleColor:(UIColor *)color {
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:color}];
+}
+
+- (void) setNavigationBarBackgroundColor:(UIColor *)color {
+    [self.navigationController.navigationBar setBackgroundColor:color];
+}
+
+- (void) setNavigationBarBackgroundImage:(UIImage *)image {
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void) setStatusBarStyle:(UIStatusBarStyle)style {
+    [UIApplication sharedApplication].statusBarStyle = style;
+}
+
+- (void) setStatusBarHidden:(BOOL) hidden {
+    [[UIApplication sharedApplication] setStatusBarHidden:hidden];
+}
+
+- (void) setStatusBarBackgroundColor:(UIColor *)color {
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
+}
+
 - (void)makeToast:(NSString *)message{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.view makeToast:message duration:1.0f position:CSToastPositionCenter];

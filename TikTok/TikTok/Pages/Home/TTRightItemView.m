@@ -7,7 +7,6 @@
 //
 
 #import "TTRightItemView.h"
-
 typedef void(^CompleteBlock)(TTRightItemViewClickType type);
 @interface TTRightItemView ()
 @property(nonatomic,strong)UIButton *searchButton;

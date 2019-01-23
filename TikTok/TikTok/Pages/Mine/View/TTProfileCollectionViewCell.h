@@ -7,7 +7,7 @@
 //
 
 #import "TTBaseCollectionViewCell.h"
-
+#import "TTAwemeModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TTProfileCollectionViewCell : TTBaseCollectionViewCell

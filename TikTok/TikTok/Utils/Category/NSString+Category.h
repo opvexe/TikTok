@@ -268,4 +268,6 @@ NSString *cacheSizeStr(NSInteger _totalSize);
  @return 获取本地数据
  */
 +(NSDictionary *)readJson2DicWithFileName:(NSString *)fileName;
+
++ (NSString *)formatCount:(NSInteger)count;
 @end

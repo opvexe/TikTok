@@ -29,7 +29,7 @@
                                        target:nil action:nil];
     negativeSpacer.width = -7;
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setImage:[UIImage imageNamed:@"navigBarHidden_back"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:@"icon_titlebar_whiteback"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0, 5, 20, 30);
     [leftBtn addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
     leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);

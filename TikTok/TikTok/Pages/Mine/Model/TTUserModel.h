@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class TTUserAvatarModel;
 @interface TTUserModel : TTBaseModel
 
+@property(nonatomic,copy)NSString *uid;
+
 /**
  * 抖音号
  */
@@ -61,6 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
  * 用户名
  */
 @property(nonatomic,copy)NSString *nickname;
+
+@property(nonatomic,copy)NSString *cover_thumb;
 @end
 
 

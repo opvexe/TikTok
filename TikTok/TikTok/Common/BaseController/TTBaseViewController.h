@@ -21,6 +21,20 @@ typedef NS_ENUM(NSUInteger, ToastPositionType) {
 
 @property (nonatomic,strong) UIView *navigationleftView;
 
+- (void) setNavigationBarTitle:(NSString *)title;
+
+- (void) setNavigationBarTitleColor:(UIColor *)color;
+
+- (void) setNavigationBarBackgroundColor:(UIColor *)color;
+
+- (void) setNavigationBarBackgroundImage:(UIImage *)image;
+
+- (void) setStatusBarStyle:(UIStatusBarStyle)style;
+
+- (void) setStatusBarHidden:(BOOL) hidden;
+
+- (void) setStatusBarBackgroundColor:(UIColor *)color;
+
 - (void)dismissKeyBoard;
 
 -(void)networkErrorWithView:(UIView*)view;

@@ -7,8 +7,9 @@
 //
 
 #import "TTHomeViewController.h"
+#import "TTHomeTableViewCell.h"
 #import "TTRightItemView.h"
-@interface TTHomeViewController ()
+@interface TTHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UISegmentedControl *segment;
 @property(nonatomic,strong)UITableView *tableListView;
 @property(nonatomic,strong)NSMutableArray *lists;
@@ -16,15 +17,52 @@
 
 @implementation TTHomeViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setNavigationBarTitleColor:[UIColor clearColor]];
+    [self setNavigationBarBackgroundColor:[UIColor clearColor]];
+    [self setStatusBarBackgroundColor:[UIColor clearColor]];
+    [self setNavigationBarBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]];
+    [self setStatusBarHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self settingNativeItemsView];
     [self configView];
+    [self refreshLoadDataSoucre];
+    if (iOS11) {
+        self.tableListView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets =NO;
+    }
 }
 
 -(void)configView{
     
-    
+    _tableListView = ({
+        UITableView *iv = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        [self.view addSubview:iv];
+        iv.showsVerticalScrollIndicator =NO;
+        iv.showsHorizontalScrollIndicator =NO;
+        iv.separatorStyle = UITableViewCellSeparatorStyleNone;
+        iv.backgroundColor = [UIColor blackColor];
+        iv.dataSource = self;
+        iv.delegate = self;
+        iv.pagingEnabled = YES;  //回弹效果
+        iv.bounces = NO;
+        iv.estimatedSectionFooterHeight = 0;
+        iv.estimatedSectionHeaderHeight = 0;
+        iv.estimatedRowHeight = 0;
+        iv.tableFooterView  =[UIView new];
+        iv;
+    });
+}
+
+-(void)refreshLoadDataSoucre{
+    NSDictionary *awemes =  [NSString readJson2DicWithFileName:@"awemes"];
+    self.lists = [TTAwemeModel mj_objectArrayWithKeyValuesArray:awemes[@"data"]];
+    [self.tableListView reloadData];
 }
 
 -(void)settingNativeItemsView{
@@ -79,9 +117,8 @@
     }];
 }
 
-
-
 -(void)segmentAction:(UISegmentedControl *)segment{
+    
     if (segment.selectedSegmentIndex == 0) {
         
         
@@ -89,6 +126,41 @@
         
         
     }
+}
+
+#pragma mark - UITableViewDelegate && UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.lists.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UIScreen mainScreen].bounds.size.height;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TTHomeTableViewCell *cell  = [TTHomeTableViewCell CellWithTableView:tableView];
+    [cell InitDataWithModel:self.lists[indexPath.row]];
+    return cell;
+}
+
+#pragma mark 适配ios11
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01f;
 }
 
 @end

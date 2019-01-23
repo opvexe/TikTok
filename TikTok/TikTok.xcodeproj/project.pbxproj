@@ -23,6 +23,10 @@
 		D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66B21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m */; };
 		D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B66E21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m */; };
 		D059B67321F71916004E4FC0 /* TTSlideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67221F71916004E4FC0 /* TTSlideTabBar.m */; };
+		D059B67621F80720004E4FC0 /* TTAwemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67521F80720004E4FC0 /* TTAwemeModel.m */; };
+		D059B67A21F84624004E4FC0 /* TTVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67921F84624004E4FC0 /* TTVideoViewController.m */; };
+		D059B67F21F84EFC004E4FC0 /* TTBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67E21F84EFC004E4FC0 /* TTBaseTableViewCell.m */; };
+		D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -100,6 +104,15 @@
 		D059B66E21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTProfileHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		D059B67121F71916004E4FC0 /* TTSlideTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSlideTabBar.h; sourceTree = "<group>"; };
 		D059B67221F71916004E4FC0 /* TTSlideTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTSlideTabBar.m; sourceTree = "<group>"; };
+		D059B67421F80720004E4FC0 /* TTAwemeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAwemeModel.h; sourceTree = "<group>"; };
+		D059B67521F80720004E4FC0 /* TTAwemeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAwemeModel.m; sourceTree = "<group>"; };
+		D059B67821F84624004E4FC0 /* TTVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTVideoViewController.h; sourceTree = "<group>"; };
+		D059B67921F84624004E4FC0 /* TTVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTVideoViewController.m; sourceTree = "<group>"; };
+		D059B67D21F84EFC004E4FC0 /* TTBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseTableViewCell.h; sourceTree = "<group>"; };
+		D059B67E21F84EFC004E4FC0 /* TTBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTBaseTableViewCell.m; sourceTree = "<group>"; };
+		D059B68021F84F10004E4FC0 /* TTBaseTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseTableViewCellProtocol.h; sourceTree = "<group>"; };
+		D059B68121F84FD2004E4FC0 /* TTHomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTHomeTableViewCell.h; sourceTree = "<group>"; };
+		D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTHomeTableViewCell.m; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,6 +221,8 @@
 			children = (
 				C2358FB521F74B0200298E14 /* TTUserModel.h */,
 				C2358FB621F74B0200298E14 /* TTUserModel.m */,
+				D059B67421F80720004E4FC0 /* TTAwemeModel.h */,
+				D059B67521F80720004E4FC0 /* TTAwemeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +278,34 @@
 				D059B67221F71916004E4FC0 /* TTSlideTabBar.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D059B67721F84606004E4FC0 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				D059B67821F84624004E4FC0 /* TTVideoViewController.h */,
+				D059B67921F84624004E4FC0 /* TTVideoViewController.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		D059B67B21F84EB6004E4FC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D059B68121F84FD2004E4FC0 /* TTHomeTableViewCell.h */,
+				D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D059B67C21F84EE5004E4FC0 /* BaseTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D059B67D21F84EFC004E4FC0 /* TTBaseTableViewCell.h */,
+				D059B67E21F84EFC004E4FC0 /* TTBaseTableViewCell.m */,
+				D059B68021F84F10004E4FC0 /* TTBaseTableViewCellProtocol.h */,
+			);
+			path = BaseTableView;
 			sourceTree = "<group>";
 		};
 		D08A0BAA21F5661C00F8D7D9 = {
@@ -347,6 +390,7 @@
 		D08A0BEA21F5670E00F8D7D9 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				D059B67721F84606004E4FC0 /* Video */,
 				D08A0C3121F594D000F8D7D9 /* Publish */,
 				D08A0C1C21F572A100F8D7D9 /* Home */,
 				D08A0C1B21F572A100F8D7D9 /* Attention */,
@@ -359,6 +403,7 @@
 		D08A0BEB21F5671E00F8D7D9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D059B67C21F84EE5004E4FC0 /* BaseTableView */,
 				D059B65F21F6FC55004E4FC0 /* BaseCollectionView */,
 				D059B64F21F6D067004E4FC0 /* BaseModel */,
 				D059B64A21F6CFD7004E4FC0 /* BaseView */,
@@ -449,6 +494,7 @@
 		D08A0C1C21F572A100F8D7D9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D059B67B21F84EB6004E4FC0 /* View */,
 				D08A0C2221F5730F00F8D7D9 /* TTHomeViewController.h */,
 				D08A0C2321F5730F00F8D7D9 /* TTHomeViewController.m */,
 				D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */,
@@ -678,6 +724,7 @@
 				D08A0C0A21F5685A00F8D7D9 /* UIGestureRecognizer+WDExtension.m in Sources */,
 				D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */,
 				D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */,
+				D059B67F21F84EFC004E4FC0 /* TTBaseTableViewCell.m in Sources */,
 				D08A0C1021F568C100F8D7D9 /* TTBaseNavigationViewController.m in Sources */,
 				D059B67321F71916004E4FC0 /* TTSlideTabBar.m in Sources */,
 				D08A0C2121F572EE00F8D7D9 /* TTBaseViewController.m in Sources */,
@@ -685,9 +732,11 @@
 				D08A0C0521F5685A00F8D7D9 /* UIViewController+WDNavigatonBarAppearance.m in Sources */,
 				D08A0C1321F568DB00F8D7D9 /* TTTabBarControllerConfig.m in Sources */,
 				D08A0C0621F5685A00F8D7D9 /* UIImage+Zip.m in Sources */,
+				D059B67621F80720004E4FC0 /* TTAwemeModel.m in Sources */,
 				D08A0C2D21F5733B00F8D7D9 /* TTMineViewController.m in Sources */,
 				D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */,
 				D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */,
+				D059B67A21F84624004E4FC0 /* TTVideoViewController.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
 				D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */,
@@ -701,6 +750,7 @@
 				D059B65A21F6F766004E4FC0 /* AppDelegate+Category.m in Sources */,
 				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
+				D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */,
 				C2358FB721F74B0200298E14 /* TTUserModel.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */,

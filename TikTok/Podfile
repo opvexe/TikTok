@@ -15,4 +15,6 @@ pod 'YYCache'
 pod 'KLCPopup'
 pod 'Toast'
 pod 'FMDB'
+pod 'SDWebImage/GIF'
+pod 'SDCycleScrollView'
 end

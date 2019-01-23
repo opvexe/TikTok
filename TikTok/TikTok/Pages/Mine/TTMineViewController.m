@@ -10,7 +10,7 @@
 #import "TTHoverViewFlowLayout.h"
 #import "TTProfileCollectionViewCell.h"
 #import "TTProfileHeaderCollectionReusableView.h"
-#import "TTUserModel.h"
+#import "TTVideoViewController.h"
 #define TTHeaderHeight          350 + NavBarHeight
 #define kSlideTabBarHeight      40
 @interface TTMineViewController ()
@@ -28,21 +28,23 @@ TTUserHeaderDelegate
 @property(nonatomic,assign)NSInteger  tabIndex;
 @property(nonatomic,strong)NSMutableArray *lists;
 @end
+static NSInteger pageIndex;
 @implementation TTMineViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    [self setNavigationBarTitleColor:[UIColor clearColor]];
+    [self setNavigationBarBackgroundColor:[UIColor clearColor]];
+    [self setStatusBarBackgroundColor:[UIColor clearColor]];
+    [self setNavigationBarBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]];
+    [self setStatusBarHidden:NO];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageIndex = 0;
     [self configView];
+    [self loadUserData];
     [self refreshLoadDataSoucre];
 }
 
@@ -53,9 +55,9 @@ TTUserHeaderDelegate
         layout.minimumInteritemSpacing = 0.0f;
         layout.minimumLineSpacing = 0.f;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        UICollectionView *iv =[[UICollectionView alloc] initWithFrame:CGRectZero
+        UICollectionView *iv =[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT - TT_TabbarHeight)
                                                  collectionViewLayout:layout];
-        iv.backgroundColor = [UIColor whiteColor];
+        iv.backgroundColor = [UIColor blackColor];
         iv.showsHorizontalScrollIndicator = NO;
         iv.showsVerticalScrollIndicator = NO;
         iv.alwaysBounceVertical = YES;
@@ -65,36 +67,63 @@ TTUserHeaderDelegate
         [iv registerClass:[TTProfileCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([TTProfileCollectionViewCell class])];
         [iv registerClass:[TTProfileHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([TTProfileHeaderCollectionReusableView class])];
         [iv registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([UICollectionReusableView class])];
-        [iv mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (iOS11) {
-                make.edges.mas_equalTo(self.view.safeAreaInsets);
-            }else{
-                make.edges.mas_equalTo(self.view);
-            }
-        }];
         iv;
     });
 }
 
--(void)refreshLoadDataSoucre{
-    
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDictionary *user =  [NSString readJson2DicWithFileName:@"user"];
-        self.userModel = [TTUserModel mj_objectWithKeyValues:user[@"data"]];
-    });
-    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-    });
+#pragma mark UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY < 0) {
+        [_Header overScrollAction:offsetY];
+    }else {
+        [_Header scrollToTopAction:offsetY];
+        [self updateNavigationTitle:offsetY];
+    }
+}
 
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [self.profileCollectionView reloadData];
-    });
+- (void)updateNavigationTitle:(CGFloat)offsetY {
+    if (TTHeaderHeight -  self.navigationController.navigationBar.frame.size.height*2 > offsetY) {
+        [self setNavigationBarTitleColor:[UIColor clearColor]];
+    }
+    if (TTHeaderHeight -  self.navigationController.navigationBar.frame.size.height*2 < offsetY && offsetY < TTHeaderHeight -  self.navigationController.navigationBar.frame.size.height) {
+        CGFloat alphaRatio =  1.0f - (TTHeaderHeight - self.navigationController.navigationBar.frame.size.height - offsetY)/self.navigationController.navigationBar.frame.size.height;
+        [self setNavigationBarTitleColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:alphaRatio]];
+    }
+    if (offsetY > TTHeaderHeight - self.navigationController.navigationBar.frame.size.height) {
+        [self setNavigationBarTitleColor:[UIColor whiteColor]];
+    }
+}
+
+#pragma mark TTSlideTabBarDelegate
+- (void)onTabTapAction:(NSInteger)index{
+    if(_tabIndex == index){
+        return;
+    }
+    
+    _tabIndex = index;
+    pageIndex = 0;
+    
+    NSLog(@"请求数据");
+}
+
+-(void)loadUserData{
+    NSDictionary *user =  [NSString readJson2DicWithFileName:@"user"];
+    self.userModel = [TTUserModel mj_objectWithKeyValues:user[@"data"]];
+    self.navigationItem.title = self.userModel.nickname;
+    [self.profileCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+}
+
+-(void)refreshLoadDataSoucre{
+    NSDictionary *awemes =  [NSString readJson2DicWithFileName:@"awemes"];
+    self.lists = [TTAwemeModel mj_objectArrayWithKeyValuesArray:awemes[@"data"]];
+    [self.profileCollectionView reloadData];
 }
 
 #pragma mark <UICollectionViewCellDelegate>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TTProfileCollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TTProfileCollectionViewCell class]) forIndexPath:indexPath];
+    [cell InitDataWithModel:self.lists[indexPath.row]];
     return cell;
 }
 
@@ -103,23 +132,19 @@ TTUserHeaderDelegate
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return self.lists.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return  CGSizeMake(self.view.width/3,self.view.width*1.35f/3);
+    return  CGSizeMake((self.view.width-1.0f)/3,self.view.width*1.35f/3);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0.0f;
+    return 0.5f;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0.0f;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    return 0.5f;
 }
 
 #pragma mark  区头
@@ -138,13 +163,10 @@ TTUserHeaderDelegate
     return [UICollectionReusableView new];
 }
 
-#pragma mark TTSlideTabBarDelegate
-- (void)onTabTapAction:(NSInteger)index{
-    if(_tabIndex == index){
-        return;
-    }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
+
 
 - (void)clickUserWithType:(TTUserHeaderDidClickType )type withUser:(TTBaseModel *)model{
     switch (type) {
@@ -186,16 +208,6 @@ TTUserHeaderDelegate
             break;
         default:
             break;
-    }
-}
-#pragma mark UIScrollViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY < 0) {
-        [_Header overScrollAction:offsetY];
-    }else {
-        [_Header scrollToTopAction:offsetY];
-        //        [self updateNavigationTitle:offsetY];
     }
 }
 

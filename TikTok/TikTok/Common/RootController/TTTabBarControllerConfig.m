@@ -58,21 +58,21 @@
 - (NSArray *)tabBarItemsAttributesForController {
     NSDictionary *homeTabBarItemsAttributes = @{
                                                 CYLTabBarItemTitle : @"首页",
-                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
+                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f,TT_iPhoneX ?0.0f:(-TT_TabbarHeight/2 + 10.0f))]
                                                 };
     
     NSDictionary *attentionTabBarItemsAttributes = @{
                                                      CYLTabBarItemTitle : @"关注",
-                                                     CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
+                                                     CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f,TT_iPhoneX ?0.0f:(-TT_TabbarHeight/2 + 10.0f))]
                                                      };
     
     NSDictionary *messageTabBarItemsAttributes = @{
                                                    CYLTabBarItemTitle : @"消息",
-                                                   CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
+                                                   CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f,TT_iPhoneX ?0.0f:(-TT_TabbarHeight/2 + 10.0f))]
                                                    };
     NSDictionary *mineTabBarItemsAttributes = @{
                                                 CYLTabBarItemTitle : @"我",
-                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, -14.0f)]
+                                                CYLTabBarItemTitlePositionAdjustment: [NSValue valueWithUIOffset:UIOffsetMake(0.0f,TT_iPhoneX ?0.0f:(-TT_TabbarHeight/2 + 10.0f))]
                                                 };
     
     NSArray *tabBarItemsAttributes = @[
@@ -85,7 +85,6 @@
 }
 
 - (void)customizeTabBarAppearance:(CYLTabBarController *)tabBarController {
-    tabBarController.tabBarHeight = TT_TabbarHeight;
     
     ///普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
@@ -103,9 +102,8 @@
     [tabBar setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
     
     // 设置背景图片
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor blackColor]]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]];
     [[UITabBar appearance] setShadowImage:[UIImage new]];
 }
-
 
 @end
