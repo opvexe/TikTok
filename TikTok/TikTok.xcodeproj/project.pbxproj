@@ -55,6 +55,12 @@
 		D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C2F21F5940A00F8D7D9 /* TTPlusButtonSubclass.m */; };
 		D08A0C3421F594E700F8D7D9 /* TTPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */; };
 		D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0C3721F5BDC900F8D7D9 /* TTTools.m */; };
+		D0EB58C921F952E700F1AB74 /* TTScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58C821F952E700F1AB74 /* TTScrollLabel.m */; };
+		D0EB58D021F959BD00F1AB74 /* TTInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58CF21F959BD00F1AB74 /* TTInteractiveTransition.m */; };
+		D0EB58D421F95A9C00F1AB74 /* TTCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58D321F95A9C00F1AB74 /* TTCommentViewController.m */; };
+		D0EB58DA21F98F0C00F1AB74 /* TTPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58D921F98F0C00F1AB74 /* TTPresentingAnimator.m */; };
+		D0EB58DD21F98F1B00F1AB74 /* TTDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */; };
+		D0EB58E021F9975E00F1AB74 /* TTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +182,18 @@
 		D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPublishViewController.m; sourceTree = "<group>"; };
 		D08A0C3621F5BDC900F8D7D9 /* TTTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTools.h; sourceTree = "<group>"; };
 		D08A0C3721F5BDC900F8D7D9 /* TTTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTools.m; sourceTree = "<group>"; };
+		D0EB58C721F952E700F1AB74 /* TTScrollLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTScrollLabel.h; sourceTree = "<group>"; };
+		D0EB58C821F952E700F1AB74 /* TTScrollLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTScrollLabel.m; sourceTree = "<group>"; };
+		D0EB58CE21F959BD00F1AB74 /* TTInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTInteractiveTransition.h; sourceTree = "<group>"; };
+		D0EB58CF21F959BD00F1AB74 /* TTInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTInteractiveTransition.m; sourceTree = "<group>"; };
+		D0EB58D221F95A9C00F1AB74 /* TTCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCommentViewController.h; sourceTree = "<group>"; };
+		D0EB58D321F95A9C00F1AB74 /* TTCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCommentViewController.m; sourceTree = "<group>"; };
+		D0EB58D821F98F0C00F1AB74 /* TTPresentingAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPresentingAnimator.h; sourceTree = "<group>"; };
+		D0EB58D921F98F0C00F1AB74 /* TTPresentingAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPresentingAnimator.m; sourceTree = "<group>"; };
+		D0EB58DB21F98F1B00F1AB74 /* TTDismissingAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTDismissingAnimator.h; sourceTree = "<group>"; };
+		D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDismissingAnimator.m; sourceTree = "<group>"; };
+		D0EB58DE21F9975E00F1AB74 /* TTNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTNavigationView.h; sourceTree = "<group>"; };
+		D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTNavigationView.m; sourceTree = "<group>"; };
 		F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.release.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,10 +298,11 @@
 		D059B67021F718FA004E4FC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D059B67121F71916004E4FC0 /* TTSlideTabBar.h */,
-				D059B67221F71916004E4FC0 /* TTSlideTabBar.m */,
-				C2358FBF21F8AA9800298E14 /* TTPlayerView.h */,
-				C2358FC021F8AA9800298E14 /* TTPlayerView.m */,
+				D0EB58E121F9980B00F1AB74 /* ItemView */,
+				D0EB58CD21F9598A00F1AB74 /* Transition */,
+				D0EB58CC21F9596500F1AB74 /* Player */,
+				D0EB58CB21F9596500F1AB74 /* RunView */,
+				D0EB58CA21F9596500F1AB74 /* SlideBar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +419,7 @@
 		D08A0BEA21F5670E00F8D7D9 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				D0EB58D121F95A7F00F1AB74 /* Comment */,
 				D059B67721F84606004E4FC0 /* Video */,
 				D08A0C3121F594D000F8D7D9 /* Publish */,
 				D08A0C1C21F572A100F8D7D9 /* Home */,
@@ -507,8 +527,8 @@
 				D059B67B21F84EB6004E4FC0 /* View */,
 				D08A0C2221F5730F00F8D7D9 /* TTHomeViewController.h */,
 				D08A0C2321F5730F00F8D7D9 /* TTHomeViewController.m */,
-				D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */,
-				D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */,
+				D0EB58DE21F9975E00F1AB74 /* TTNavigationView.h */,
+				D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -551,6 +571,64 @@
 				D08A0C3721F5BDC900F8D7D9 /* TTTools.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		D0EB58CA21F9596500F1AB74 /* SlideBar */ = {
+			isa = PBXGroup;
+			children = (
+				D059B67121F71916004E4FC0 /* TTSlideTabBar.h */,
+				D059B67221F71916004E4FC0 /* TTSlideTabBar.m */,
+			);
+			path = SlideBar;
+			sourceTree = "<group>";
+		};
+		D0EB58CB21F9596500F1AB74 /* RunView */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB58C721F952E700F1AB74 /* TTScrollLabel.h */,
+				D0EB58C821F952E700F1AB74 /* TTScrollLabel.m */,
+			);
+			path = RunView;
+			sourceTree = "<group>";
+		};
+		D0EB58CC21F9596500F1AB74 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C2358FBF21F8AA9800298E14 /* TTPlayerView.h */,
+				C2358FC021F8AA9800298E14 /* TTPlayerView.m */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		D0EB58CD21F9598A00F1AB74 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB58CE21F959BD00F1AB74 /* TTInteractiveTransition.h */,
+				D0EB58CF21F959BD00F1AB74 /* TTInteractiveTransition.m */,
+				D0EB58D821F98F0C00F1AB74 /* TTPresentingAnimator.h */,
+				D0EB58D921F98F0C00F1AB74 /* TTPresentingAnimator.m */,
+				D0EB58DB21F98F1B00F1AB74 /* TTDismissingAnimator.h */,
+				D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		D0EB58D121F95A7F00F1AB74 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB58D221F95A9C00F1AB74 /* TTCommentViewController.h */,
+				D0EB58D321F95A9C00F1AB74 /* TTCommentViewController.m */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		D0EB58E121F9980B00F1AB74 /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				D059B65321F6D0D0004E4FC0 /* TTRightItemView.h */,
+				D059B65421F6D0D0004E4FC0 /* TTRightItemView.m */,
+			);
+			path = ItemView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -740,7 +818,11 @@
 				D059B67321F71916004E4FC0 /* TTSlideTabBar.m in Sources */,
 				D08A0C2121F572EE00F8D7D9 /* TTBaseViewController.m in Sources */,
 				D08A0C0921F5685A00F8D7D9 /* Foundation+Log.m in Sources */,
+				D0EB58DD21F98F1B00F1AB74 /* TTDismissingAnimator.m in Sources */,
+				D0EB58D021F959BD00F1AB74 /* TTInteractiveTransition.m in Sources */,
 				D08A0C0521F5685A00F8D7D9 /* UIViewController+WDNavigatonBarAppearance.m in Sources */,
+				D0EB58DA21F98F0C00F1AB74 /* TTPresentingAnimator.m in Sources */,
+				D0EB58D421F95A9C00F1AB74 /* TTCommentViewController.m in Sources */,
 				D08A0C1321F568DB00F8D7D9 /* TTTabBarControllerConfig.m in Sources */,
 				D08A0C0621F5685A00F8D7D9 /* UIImage+Zip.m in Sources */,
 				D059B67621F80720004E4FC0 /* TTAwemeModel.m in Sources */,
@@ -753,10 +835,12 @@
 				D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */,
 				D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */,
 				D08A0C0B21F5685A00F8D7D9 /* UIFont+Category.m in Sources */,
+				D0EB58C921F952E700F1AB74 /* TTScrollLabel.m in Sources */,
 				D08A0C3421F594E700F8D7D9 /* TTPublishViewController.m in Sources */,
 				D08A0C0821F5685A00F8D7D9 /* UIView+WDBlocksKit.m in Sources */,
 				D08A0C0221F5685A00F8D7D9 /* UIImage+ScaleImage.m in Sources */,
 				D08A0C2721F5732300F8D7D9 /* TTAttentionViewController.m in Sources */,
+				D0EB58E021F9975E00F1AB74 /* TTNavigationView.m in Sources */,
 				C2358FC121F8AA9800298E14 /* TTPlayerView.m in Sources */,
 				D08A0C0321F5685A00F8D7D9 /* UIView+Category.m in Sources */,
 				D059B65A21F6F766004E4FC0 /* AppDelegate+Category.m in Sources */,

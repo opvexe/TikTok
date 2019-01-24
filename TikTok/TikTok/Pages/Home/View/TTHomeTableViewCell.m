@@ -8,6 +8,7 @@
 
 #import "TTHomeTableViewCell.h"
 #import "TTMusicAlbumView.h"
+#import "TTScrollLabel.h"
 #import "TTPlayerView.h"
 #import "TTUserModel.h"
 @interface TTHomeTableViewCell()<SDCycleScrollViewDelegate>
@@ -20,10 +21,11 @@
 @property(nonatomic,strong)TTMusicAlbumView *albumView;
 @property(nonatomic,strong)UILabel *nickName;
 @property(nonatomic,strong)UILabel *desc;
-@property(nonatomic,strong)SDCycleScrollView *cycleSrollView;
+@property(nonatomic,strong)TTScrollLabel *srollView;
 @property(nonatomic,strong)FLAnimatedImageView *musicIcon;
 @property(nonatomic,strong)UIButton *pause;
 @property(nonatomic,strong)TTAwemeModel *model;
+@property(nonatomic,strong)CALayer *backgroudLayer;
 @end
 @implementation TTHomeTableViewCell
 
@@ -38,9 +40,13 @@
 
 -(void)TTSinitConfingViews{
     
+    CALayer *backgroudLayer = [CALayer layer];
+    backgroudLayer.contents = (id)[UIImage imageNamed:@"img_video_loading"].CGImage;
+    [self.contentView.layer addSublayer:backgroudLayer];
+    self.backgroudLayer = backgroudLayer;
+    
     _playerView = ({
         TTPlayerView *iv = [[TTPlayerView alloc]init];
-        iv.backgroundColor = [UIColor blackColor];
         [self.contentView addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
@@ -72,6 +78,7 @@
         [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateSelected];
         [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateDisabled];
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
+        iv.tag = TTPlayerTableClickTypePlay;
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.centerX.mas_equalTo(self.container);
             make.size.mas_equalTo(CGSizeMake(52.0f, 62.0f));
@@ -90,6 +97,7 @@
         iv.showsTouchWhenHighlighted =NO;
         iv.clipsToBounds = YES;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
+        iv.tag = TTPlayerTableClickTypeAvator;
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.container);
             make.right.mas_equalTo(-10.0f);
@@ -103,17 +111,18 @@
         [self.container addSubview:iv];
         [iv setImage:[UIImage imageNamed:@"icon_home_like_before"] forState:UIControlStateNormal];
         [iv setImage:[UIImage imageNamed:@"icon_home_like_after"] forState:UIControlStateSelected];
-        [iv setTitle:@"0" forState:UIControlStateNormal];
-        [iv setTitle:@"0" forState:UIControlStateHighlighted];
-        [iv setTitle:@"0" forState:UIControlStateSelected];
-        [iv setTitle:@"0" forState:UIControlStateDisabled];
+        [iv setTitle:@"1000" forState:UIControlStateNormal];
+        [iv setTitle:@"1000" forState:UIControlStateSelected];
+        [iv setTitle:@"1000" forState:UIControlStateHighlighted];
+        [iv setTitle:@"1000" forState:UIControlStateDisabled];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-        [iv.titleLabel setFont:[UIFont SYHelveticaFontOfSize:12.0f]];
+        [iv setTitleColor:[UIColor whiteColor]  forState:UIControlStateHighlighted];
+        iv.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+        iv.adjustsImageWhenHighlighted =NO;
         iv.showsTouchWhenHighlighted =NO;
-        iv.clipsToBounds = YES;
+        iv.tag = TTPlayerTableClickTypeLikes;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -129,11 +138,11 @@
         UIButton *iv = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.container addSubview:iv];
         [iv setImage:[UIImage imageNamed:@"icon_home_comment"] forState:UIControlStateNormal];
-        [iv setImage:[UIImage imageNamed:@"icon_home_comment"] forState:UIControlStateNormal];
-        [iv setTitle:@"0" forState:UIControlStateNormal];
-        [iv setTitle:@"0" forState:UIControlStateHighlighted];
-        [iv setTitle:@"0" forState:UIControlStateSelected];
-        [iv setTitle:@"0" forState:UIControlStateDisabled];
+        [iv setImage:[UIImage imageNamed:@"icon_home_comment"] forState:UIControlStateHighlighted];
+        [iv setTitle:@"1000" forState:UIControlStateNormal];
+        [iv setTitle:@"1000" forState:UIControlStateSelected];
+        [iv setTitle:@"1000" forState:UIControlStateHighlighted];
+        [iv setTitle:@"1000" forState:UIControlStateDisabled];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -141,6 +150,7 @@
         [iv.titleLabel setFont:[UIFont SYHelveticaFontOfSize:12.0f]];
         iv.showsTouchWhenHighlighted =NO;
         iv.clipsToBounds = YES;
+        iv.tag = TTPlayerTableClickTypeComment;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -156,11 +166,11 @@
         UIButton *iv = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.container addSubview:iv];
         [iv setImage:[UIImage imageNamed:@"icon_home_share"] forState:UIControlStateNormal];
-        [iv setImage:[UIImage imageNamed:@"icon_home_share"] forState:UIControlStateNormal];
-        [iv setTitle:@"0" forState:UIControlStateNormal];
-        [iv setTitle:@"0" forState:UIControlStateHighlighted];
-        [iv setTitle:@"0" forState:UIControlStateSelected];
-        [iv setTitle:@"0" forState:UIControlStateDisabled];
+        [iv setImage:[UIImage imageNamed:@"icon_home_share"] forState:UIControlStateHighlighted];
+        [iv setTitle:@"1000" forState:UIControlStateNormal];
+        [iv setTitle:@"1000" forState:UIControlStateSelected];
+        [iv setTitle:@"1000" forState:UIControlStateHighlighted];
+        [iv setTitle:@"1000" forState:UIControlStateDisabled];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -168,6 +178,7 @@
         [iv.titleLabel setFont:[UIFont SYHelveticaFontOfSize:12.0f]];
         iv.showsTouchWhenHighlighted =NO;
         iv.clipsToBounds = YES;
+        iv.tag = TTPlayerTableClickTypeShare;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -182,6 +193,7 @@
     
     _albumView = ({
         TTMusicAlbumView *iv = [[TTMusicAlbumView alloc]init];
+        iv.tag = TTPlayerTableClickTypeAlbum;
         [self.container addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.avator);
@@ -191,6 +203,14 @@
         }];
         iv;
     });
+    
+    @weakify(self);
+    [self.albumView WH_whenTapped:^{
+        if (self.delegate) {
+            [self.delegate playerClickType:self.albumView.tag model:self.model];
+        }
+    }];
+    
     
     _musicIcon = ({
         FLAnimatedImageView *iv = [[FLAnimatedImageView alloc]init];
@@ -206,11 +226,9 @@
         iv;
     });
     
-    _cycleSrollView = ({
-        SDCycleScrollView *iv = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:nil];
-        iv.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    _srollView = ({
+        TTScrollLabel *iv = [[TTScrollLabel alloc]init];
         iv.backgroundColor = [UIColor clearColor];
-        iv.onlyDisplayText = YES;
         [self.container addSubview:iv];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.musicIcon.mas_right);
@@ -225,14 +243,13 @@
         UILabel *iv = [[UILabel alloc]init];
         [self.container addSubview:iv];
         iv.numberOfLines = 3.0f;
-        iv.text = @"一个tableview,一个view。两个界面都加载在self.view上，tableview覆盖在view界面上，tableview有个弹簧效果，背景颜色设置透明向下拉伸会看到view一点一点出现，但是因为弹簧效果的原因，拉伸到一定程度松手又会回弹覆盖掉view，有什么办法能让tableview的弹簧效果悬停一下，上滑tableview才会弹回覆盖掉view。有点类似下拉刷新，下拉会出现刷新文字的view，悬停然后向上滑动tableview彻底覆盖掉view。";
         iv.textAlignment = NSTextAlignmentLeft;
         iv.textColor = [UIColor whiteColor];
         iv.font = [UIFont SYPingFangSCSemiboldFontOfSize:14.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.musicIcon);
-            make.bottom.mas_equalTo(self.cycleSrollView.mas_top).mas_offset(-10.0f);
-            make.right.mas_equalTo(-100.0f);
+            make.bottom.mas_equalTo(self.srollView.mas_top).mas_offset(-10.0f);
+            make.right.mas_equalTo(-80.0f);
         }];
         iv;
     });
@@ -240,10 +257,10 @@
     _nickName = ({
         UILabel *iv = [[UILabel alloc]init];
         [self.container addSubview:iv];
-        iv.text = @"@ 白皮胖";
         iv.numberOfLines = 3.0f;
         iv.textAlignment = NSTextAlignmentLeft;
         iv.textColor = [UIColor whiteColor];
+        iv.tag = TTPlayerTableClickTypeNickName;
         iv.font = [UIFont SYPingFangSCSemiboldFontOfSize:16.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.musicIcon);
@@ -253,31 +270,36 @@
         }];
         iv;
     });
+    
+    [self.albumView WH_whenTapped:^{
+        if (self.delegate) {
+            [self.delegate playerClickType:self.nickName.tag model:self.model];
+        }
+    }];
+    
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.backgroudLayer.frame = self.contentView.bounds;
+}
 
 -(void)Click:(UIButton *)sender{
-    
-    
+    if (self.delegate) {
+        [self.delegate playerClickType:sender.tag model:_model];
+    }
 }
 
 -(void)InitDataWithModel:(TTAwemeModel *)model{
     _model = model;
     self.desc.text = model.desc;
     self.nickName.text = [NSString stringWithFormat:@"@ %@",model.author.nickname];
-    [self.comment setTitle:model.statistics.comment_count forState:UIControlStateNormal];
-    [self.shared setTitle:model.statistics.share_count forState:UIControlStateNormal];
-    [self.likes setTitle:model.statistics.digg_count forState:UIControlStateNormal];
+    [self.comment setTitle:[NSString formatCount:[model.statistics.comment_count integerValue]] forState:UIControlStateNormal];
+    [self.shared setTitle:[NSString formatCount:[model.statistics.share_count integerValue]] forState:UIControlStateNormal];
+    [self.likes setTitle:[NSString formatCount:[model.statistics.digg_count integerValue]] forState:UIControlStateNormal];
     [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
     self.albumView.albumURL = model.music.cover_thumb.url_list.firstObject;
     [self.albumView startAnimation:model.rate];
-    
-    NSMutableArray *urls = [NSMutableArray arrayWithCapacity:0];
-    [urls addObject:[NSString stringWithFormat:@"%@ - %@", model.music.title, model.music.author]];
-    [urls addObject:[NSString stringWithFormat:@"%@ - %@", model.music.title, model.music.author]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.cycleSrollView.titlesGroup = urls;
-    });
 }
 
 
@@ -287,7 +309,7 @@
 }
 
 - (void)handleGesture:(UITapGestureRecognizer *)sender {
-    
+    NSLog(@"单击 暂停");
 }
 
 @end

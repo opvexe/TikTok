@@ -11,6 +11,10 @@
 #import "TTProfileCollectionViewCell.h"
 #import "TTProfileHeaderCollectionReusableView.h"
 #import "TTVideoViewController.h"
+#import "TTInteractiveTransition.h"
+#import "TTPresentingAnimator.h"
+#import "TTDismissingAnimator.h"
+#import "TTMineViewController.h"
 #define TTHeaderHeight          350 + NavBarHeight
 #define kSlideTabBarHeight      40
 @interface TTMineViewController ()
@@ -20,10 +24,11 @@ UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
 UIScrollViewDelegate,
 TTSlideTabBarDelegate,
-TTUserHeaderDelegate
+TTUserHeaderDelegate,
+UIViewControllerTransitioningDelegate
 >
-@property(nonatomic,strong)UICollectionView *profileCollectionView;
 @property(nonatomic,strong)TTProfileHeaderCollectionReusableView *Header;
+@property (nonatomic, strong)TTInteractiveTransition *swipeLeftInteractiveTransition;
 @property(nonatomic,strong)TTUserModel *userModel;
 @property(nonatomic,assign)NSInteger  tabIndex;
 @property(nonatomic,strong)NSMutableArray *lists;
@@ -46,6 +51,7 @@ static NSInteger pageIndex;
     [self configView];
     [self loadUserData];
     [self refreshLoadDataSoucre];
+    _swipeLeftInteractiveTransition = [[TTInteractiveTransition alloc]init];
 }
 
 -(void)configView{
@@ -164,7 +170,12 @@ static NSInteger pageIndex;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    TTMineViewController *controller = [[TTMineViewController alloc]init];
+    controller.transitioningDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [_swipeLeftInteractiveTransition wireToViewController:controller];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 
@@ -210,5 +221,19 @@ static NSInteger pageIndex;
             break;
     }
 }
+
+#pragma mark UIViewControllerTransitioningDelegate
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [[TTPresentingAnimator alloc]init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[TTDismissingAnimator alloc]init];
+}
+
+-(id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+    return _swipeLeftInteractiveTransition.interacting ? _swipeLeftInteractiveTransition : nil;
+}
+
 
 @end

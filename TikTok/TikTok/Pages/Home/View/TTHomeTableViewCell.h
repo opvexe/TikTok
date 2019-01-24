@@ -11,15 +11,23 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, TTPlayerTableClickType) {
-    TTPlayerTableClickTypePause,
+    TTPlayerTableClickTypePlay,
     TTPlayerTableClickTypeAvator,
     TTPlayerTableClickTypeLikes,
     TTPlayerTableClickTypeComment,
     TTPlayerTableClickTypeShare,
+    TTPlayerTableClickTypeAlbum,
     TTPlayerTableClickTypeNickName,
 };
 
+@protocol TTPlayerTableClickDelegate
+@optional
+- (void)playerClickType:(TTPlayerTableClickType )type model:(TTBaseModel *)model;
+@end
+
 @interface TTHomeTableViewCell : TTBaseTableViewCell
+
+@property(nonatomic,weak) id <TTPlayerTableClickDelegate>delegate;
 
 @end
 

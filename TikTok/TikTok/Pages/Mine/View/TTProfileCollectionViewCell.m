@@ -7,7 +7,6 @@
 //
 
 #import "TTProfileCollectionViewCell.h"
-#
 @interface TTProfileCollectionViewCell()
 @property(nonatomic,strong)FLAnimatedImageView *cover;
 @property(nonatomic,strong)UIButton *likeNum;

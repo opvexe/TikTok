@@ -9,6 +9,9 @@
 #import "NSString+Category.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
+#import <CoreText/CTFramesetter.h>
+#import <CoreText/CTFont.h>
+#import <CoreText/CTStringAttributes.h>
 #define EmojiCodeToSymbol(c) ((((0x808080F0 | (c & 0x3F000) >> 4) | (c & 0xFC0) << 10) | (c & 0x1C0000) << 18) | (c & 0x3F) << 24)
 #define CURRENT_CALENDAR [NSCalendar currentCalendar]
 #define DATE_COMPONENTS (NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit)
@@ -500,4 +503,63 @@ NSString *cacheSizeStr(NSInteger _totalSize){
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     return dic;
 }
+
+
+//计算单行文本行高、支持包含emoji表情符的计算。开头空格、自定义插入的文本图片不纳入计算范围
+- (CGSize)singleLineSizeWithAttributeText:(UIFont *)font {
+    CTFontRef cfFont = CTFontCreateWithName((CFStringRef) font.fontName, font.pointSize, NULL);
+    CGFloat leading = font.lineHeight - font.ascender + font.descender;
+    CTParagraphStyleSetting paragraphSettings[1] = { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof (CGFloat), &leading };
+    
+    CTParagraphStyleRef  paragraphStyle = CTParagraphStyleCreate(paragraphSettings, 1);
+    CFRange textRange = CFRangeMake(0, self.length);
+    
+    CFMutableAttributedStringRef string = CFAttributedStringCreateMutable(kCFAllocatorDefault, self.length);
+    
+    CFAttributedStringReplaceString(string, CFRangeMake(0, 0), (CFStringRef) self);
+    
+    CFAttributedStringSetAttribute(string, textRange, kCTFontAttributeName, cfFont);
+    CFAttributedStringSetAttribute(string, textRange, kCTParagraphStyleAttributeName, paragraphStyle);
+    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(string);
+    CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, CGSizeMake(DBL_MAX, DBL_MAX), nil);
+    
+    CFRelease(paragraphStyle);
+    CFRelease(string);
+    CFRelease(cfFont);
+    CFRelease(framesetter);
+    return size;
+}
+
+//固定宽度计算多行文本高度，支持包含emoji表情符的计算。开头空格、自定义插入的文本图片不纳入计算范围、
+- (CGSize)multiLineSizeWithAttributeText:(CGFloat)width font:(UIFont *)font {
+    CTFontRef cfFont = CTFontCreateWithName((CFStringRef) font.fontName, font.pointSize, NULL);
+    CGFloat leading = font.lineHeight - font.ascender + font.descender;
+    CTParagraphStyleSetting paragraphSettings[1] = { kCTParagraphStyleSpecifierLineBreakMode, sizeof (CGFloat), &leading };
+    
+    CTParagraphStyleRef  paragraphStyle = CTParagraphStyleCreate(paragraphSettings, 1);
+    CFRange textRange = CFRangeMake(0, self.length);
+    
+    //  Create an empty mutable string big enough to hold our test
+    CFMutableAttributedStringRef string = CFAttributedStringCreateMutable(kCFAllocatorDefault, self.length);
+    
+    //  Inject our text into it
+    CFAttributedStringReplaceString(string, CFRangeMake(0, 0), (CFStringRef) self);
+    
+    //  Apply our font and line spacing attributes over the span
+    CFAttributedStringSetAttribute(string, textRange, kCTFontAttributeName, cfFont);
+    CFAttributedStringSetAttribute(string, textRange, kCTParagraphStyleAttributeName, paragraphStyle);
+    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(string);
+    
+    CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, CGSizeMake(width, DBL_MAX), nil);
+    
+    CFRelease(paragraphStyle);
+    CFRelease(string);
+    CFRelease(cfFont);
+    CFRelease(framesetter);
+    
+    return size;
+}
+
 @end

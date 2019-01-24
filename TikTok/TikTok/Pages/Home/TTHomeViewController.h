@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TTHomeViewController : TTBaseViewController
 
+@property (nonatomic, assign) NSInteger currentIndex;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

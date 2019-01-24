@@ -270,4 +270,7 @@ NSString *cacheSizeStr(NSInteger _totalSize);
 +(NSDictionary *)readJson2DicWithFileName:(NSString *)fileName;
 
 + (NSString *)formatCount:(NSInteger)count;
+
+- (CGSize)singleLineSizeWithAttributeText:(UIFont *)font;
+- (CGSize)multiLineSizeWithAttributeText:(CGFloat)width font:(UIFont *)font;
 @end

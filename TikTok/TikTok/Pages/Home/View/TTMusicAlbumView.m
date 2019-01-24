@@ -15,26 +15,35 @@
 @end
 @implementation TTMusicAlbumView
 
--(void)TTSAddSubviews{
-    
-    _noteLayers = [NSMutableArray arrayWithCapacity:0];
-    
-    _backgroudLayer = ({
-        CALayer *iv = [CALayer layer];
-        iv.frame = self.bounds;
-        iv.contents = (id)[UIImage imageNamed:@"music_cover"].CGImage;
-        [self.layer addSublayer:iv];
-        iv;
-    });
-    
-    _albumImageView = ({
-        UIImageView *iv = [[UIImageView alloc]initWithFrame:CGRectZero];
-        iv.contentMode = UIViewContentModeScaleAspectFill;
-        iv.layer.cornerRadius = 15.0f;
-        iv.clipsToBounds =YES;
-        [self addSubview:iv];
-        iv;
-    });
+- (instancetype)init {
+    return [self initWithFrame:CGRectMake(0, 0, 50, 50)];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        _noteLayers = [NSMutableArray arrayWithCapacity:0];
+        
+        _backgroudLayer = ({
+            CALayer *iv = [CALayer layer];
+            iv.frame = self.bounds;
+            iv.contents = (id)[UIImage imageNamed:@"music_cover"].CGImage;
+            [self.layer addSublayer:iv];
+            iv;
+        });
+        
+        _albumImageView = ({
+            UIImageView *iv = [[UIImageView alloc]initWithFrame:CGRectZero];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.layer.cornerRadius = 15.0f;
+            iv.clipsToBounds =YES;
+            [self addSubview:iv];
+            iv;
+        });
+    }
+    return self;
 }
 
 -(void)layoutSubviews{
@@ -73,8 +82,8 @@
     animationGroup.beginTime = CACurrentMediaTime() + delayTime;
     animationGroup.repeatCount = MAXFLOAT;
     animationGroup.removedOnCompletion = NO;
-    animationGroup.fillMode = kCAFillModeForwards;
-    animationGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animationGroup.fillMode = kCAFillModeForwards;  ///layer会一直保持着动画最后的状态
+    animationGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];  ///动画的速度变化
     
     //bezier路径帧动画
     CAKeyframeAnimation * pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
