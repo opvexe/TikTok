@@ -61,6 +61,7 @@
 		D0EB58DA21F98F0C00F1AB74 /* TTPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58D921F98F0C00F1AB74 /* TTPresentingAnimator.m */; };
 		D0EB58DD21F98F1B00F1AB74 /* TTDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */; };
 		D0EB58E021F9975E00F1AB74 /* TTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */; };
+		D0EB58E521F9AE7400F1AB74 /* TTCommentShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,8 @@
 		D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDismissingAnimator.m; sourceTree = "<group>"; };
 		D0EB58DE21F9975E00F1AB74 /* TTNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTNavigationView.h; sourceTree = "<group>"; };
 		D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTNavigationView.m; sourceTree = "<group>"; };
+		D0EB58E321F9AE7400F1AB74 /* TTCommentShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCommentShowView.h; sourceTree = "<group>"; };
+		D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCommentShowView.m; sourceTree = "<group>"; };
 		F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.release.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +301,7 @@
 		D059B67021F718FA004E4FC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D0EB58E221F9ADE600F1AB74 /* PopView */,
 				D0EB58E121F9980B00F1AB74 /* ItemView */,
 				D0EB58CD21F9598A00F1AB74 /* Transition */,
 				D0EB58CC21F9596500F1AB74 /* Player */,
@@ -631,6 +635,15 @@
 			path = ItemView;
 			sourceTree = "<group>";
 		};
+		D0EB58E221F9ADE600F1AB74 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB58E321F9AE7400F1AB74 /* TTCommentShowView.h */,
+				D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -811,6 +824,7 @@
 				C2358FBE21F8A15900298E14 /* TTMusicAlbumView.m in Sources */,
 				D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */,
 				D08A0C0A21F5685A00F8D7D9 /* UIGestureRecognizer+WDExtension.m in Sources */,
+				D0EB58E521F9AE7400F1AB74 /* TTCommentShowView.m in Sources */,
 				D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */,
 				D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */,
 				D059B67F21F84EFC004E4FC0 /* TTBaseTableViewCell.m in Sources */,

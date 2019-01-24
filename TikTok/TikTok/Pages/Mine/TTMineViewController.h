@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TTMineViewController : TTBaseViewController
 
-@property(nonatomic,strong)UICollectionView *profileCollectionView;
+@property(nonatomic,strong)UICollectionView *listCollectionView;
 
 @property(nonatomic,assign)NSInteger   selectIndex;
 

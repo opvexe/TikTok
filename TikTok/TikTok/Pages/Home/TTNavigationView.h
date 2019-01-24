@@ -7,10 +7,20 @@
 //
 
 #import "TTBaseView.h"
-
+#import "TTRightItemView.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, TTNavigationClickType) {
+    TTNavigationClickTypeShot,
+    TTNavigationClickTypeSegment,
+};
+
 @interface TTNavigationView : TTBaseView
+
+@property(nonatomic,strong)TTRightItemView *rightView;
+
+
+@property(nonatomic,copy)void(^clickBlock)(TTNavigationClickType type,NSInteger selectedSegmentIndex);
 
 @end
 

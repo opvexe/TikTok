@@ -7,7 +7,6 @@
 //
 
 #import "TTNavigationView.h"
-#import "TTRightItemView.h"
 @interface TTNavigationView()
 @property(nonatomic,strong)UISegmentedControl *segment;
 @property(nonatomic,strong)UIButton *shot;
@@ -40,7 +39,6 @@
         iv;
     });
     
-    
     _shot = ({
         UIButton *leftView = [UIButton buttonWithType:UIButtonTypeCustom];
         leftView.frame = CGRectMake(Number(10.0f), 20.0f, Number(50.0f), NumberHeight(30.0f));
@@ -58,39 +56,29 @@
         [leftView setTitleColor:[UIColor TextGrayColor] forState:UIControlStateDisabled];
         [leftView.titleLabel setFont:[UIFont SYHelveticaFontOfSize:14.0f]];
         [leftView layoutTextWithImageButtonStyle:layoutTextRightImageButton withSpace:3.0f];
+        [leftView addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:leftView];
         leftView;
     });
     
-    TTRightItemView *rightView = [[TTRightItemView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.frame) - Number(90.0f), 20.0f, Number(80.0f), NumberHeight(30.0f))];
-    [self addSubview:rightView];
-    [rightView compelet:^(TTRightItemViewClickType type) {
-        switch (type) {
-            case TTRightItemViewClickTypeSearch:{
-                
-            }
-                break;
-            case TTRightItemViewClickTypeLiving:{
-                
-            }
-                break;
-            default:
-                break;
-        }
-    }];
+    _rightView = ({
+        TTRightItemView *iv = [[TTRightItemView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.frame) - Number(90.0f), 20.0f, Number(80.0f), NumberHeight(30.0f))];
+        [self addSubview:iv];
+        iv;
+    });
 }
 
 
 -(void)segmentAction:(UISegmentedControl *)segment{
-    
-    if (segment.selectedSegmentIndex == 0) {
-        
-        
-    }else if (segment.selectedSegmentIndex == 1){
-        
-        
+    if (self.clickBlock) {
+        self.clickBlock(TTNavigationClickTypeSegment, segment.selectedSegmentIndex);
     }
 }
 
+-(void)Click:(UIButton *)sender{
+    if (self.clickBlock) {
+        self.clickBlock(TTNavigationClickTypeShot, sender.tag);
+    }
+}
 
 @end

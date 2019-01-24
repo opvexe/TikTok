@@ -34,7 +34,7 @@
     UINavigationController *toVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     TTMineViewController *userHomePageController = toVC.viewControllers.firstObject;
-    UIView *selectCell = (TTProfileCollectionViewCell *)[userHomePageController.profileCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromVC.currentIndex inSection:1]];
+    UIView *selectCell = (TTProfileCollectionViewCell *)[userHomePageController.listCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromVC.currentIndex inSection:1]];
     
     UIView *snapshotView;
     CGFloat scaleRatio;
@@ -43,7 +43,7 @@
         snapshotView = [selectCell snapshotViewAfterScreenUpdates:NO];
         scaleRatio = fromVC.view.frame.size.width/selectCell.frame.size.width;
         snapshotView.layer.zPosition = 20;
-        finalFrame = [userHomePageController.profileCollectionView convertRect:selectCell.frame toView:[userHomePageController.profileCollectionView superview]];
+        finalFrame = [userHomePageController.listCollectionView convertRect:selectCell.frame toView:[userHomePageController.listCollectionView superview]];
     }else {
         snapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
         scaleRatio = fromVC.view.frame.size.width/[UIScreen mainScreen].bounds.size.width;

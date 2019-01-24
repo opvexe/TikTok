@@ -10,6 +10,7 @@
 #import "TTCommentViewController.h"
 #import "TTHomeTableViewCell.h"
 #import "TTNavigationView.h"
+#import "TTCommentShowView.h"
 @interface TTHomeViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
@@ -39,11 +40,7 @@ UIViewControllerTransitioningDelegate
     [super viewDidLoad];
     [self configView];
     [self refreshLoadDataSoucre];
-    if (iOS11) {
-        self.tableListView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        self.automaticallyAdjustsScrollViewInsets =NO;
-    }
+    
 }
 
 -(void)configView{
@@ -63,6 +60,11 @@ UIViewControllerTransitioningDelegate
         iv.estimatedSectionHeaderHeight = 0;
         iv.estimatedRowHeight = 0;
         iv.tableFooterView  =[UIView new];
+        if (iOS11) {
+            iv.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets =NO;
+        }
         iv;
     });
     
@@ -73,6 +75,36 @@ UIViewControllerTransitioningDelegate
         iv;
     });
     
+    
+    [self.navgationView.rightView compelet:^(TTRightItemViewClickType type) {
+        switch (type) {
+            case TTRightItemViewClickTypeSearch:{
+                
+            }
+                break;
+            case TTRightItemViewClickTypeLiving:{
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }];
+    
+    [self.navgationView setClickBlock:^(TTNavigationClickType type, NSInteger selectedSegmentIndex) {
+        switch (type) {
+            case TTNavigationClickTypeSegment:{
+                
+            }
+                break;
+            case TTNavigationClickTypeShot:{
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }];
 }
 
 -(void)refreshLoadDataSoucre{
@@ -135,11 +167,8 @@ UIViewControllerTransitioningDelegate
             break;
         case TTPlayerTableClickTypeComment:{
             NSLog(@"评论");
-            TTCommentViewController *controller = [[TTCommentViewController alloc]init];
-            controller.transitioningDelegate = self;
-            //            controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-            //            self.modalPresentationStyle = UIModalPresentationCurrentContext;
-            [self presentViewController:controller animated:YES completion:nil];
+            TTCommentShowView *comment = [[TTCommentShowView alloc]initWithCommentId:model.aweme_id];
+            [comment show];
         }
             break;
         case TTPlayerTableClickTypeShare:{

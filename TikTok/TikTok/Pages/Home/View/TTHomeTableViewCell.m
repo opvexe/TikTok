@@ -40,10 +40,12 @@
 
 -(void)TTSinitConfingViews{
     
-    CALayer *backgroudLayer = [CALayer layer];
-    backgroudLayer.contents = (id)[UIImage imageNamed:@"img_video_loading"].CGImage;
-    [self.contentView.layer addSublayer:backgroudLayer];
-    self.backgroudLayer = backgroudLayer;
+    _backgroudLayer = ({
+        CALayer *iv = [CALayer layer];
+        iv.contents = (id)[UIImage imageNamed:@"img_video_loading"].CGImage;
+        [self.contentView.layer addSublayer:iv];
+        iv;
+    });
     
     _playerView = ({
         TTPlayerView *iv = [[TTPlayerView alloc]init];
@@ -71,7 +73,6 @@
         UIButton *iv = [UIButton buttonWithType:UIButtonTypeCustom];
         iv.showsTouchWhenHighlighted =NO;
         iv.clipsToBounds = YES;
-        iv.hidden = YES;
         [self.container addSubview:iv];
         [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateNormal];
         [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateHighlighted];
@@ -204,7 +205,7 @@
         iv;
     });
     
-    @weakify(self);
+    
     [self.albumView WH_whenTapped:^{
         if (self.delegate) {
             [self.delegate playerClickType:self.albumView.tag model:self.model];
@@ -283,6 +284,7 @@
     [super layoutSubviews];
     self.backgroudLayer.frame = self.contentView.bounds;
 }
+
 
 -(void)Click:(UIButton *)sender{
     if (self.delegate) {

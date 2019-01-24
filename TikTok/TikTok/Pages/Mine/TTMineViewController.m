@@ -56,7 +56,7 @@ static NSInteger pageIndex;
 
 -(void)configView{
     
-    _profileCollectionView = ({
+    _listCollectionView = ({
         TTHoverViewFlowLayout *layout =[[TTHoverViewFlowLayout alloc]initWithTopHeight:NavBarHeight + kSlideTabBarHeight];
         layout.minimumInteritemSpacing = 0.0f;
         layout.minimumLineSpacing = 0.f;
@@ -117,13 +117,13 @@ static NSInteger pageIndex;
     NSDictionary *user =  [NSString readJson2DicWithFileName:@"user"];
     self.userModel = [TTUserModel mj_objectWithKeyValues:user[@"data"]];
     self.navigationItem.title = self.userModel.nickname;
-    [self.profileCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [self.listCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 -(void)refreshLoadDataSoucre{
     NSDictionary *awemes =  [NSString readJson2DicWithFileName:@"awemes"];
     self.lists = [TTAwemeModel mj_objectArrayWithKeyValuesArray:awemes[@"data"]];
-    [self.profileCollectionView reloadData];
+    [self.listCollectionView reloadData];
 }
 
 #pragma mark <UICollectionViewCellDelegate>
@@ -170,12 +170,8 @@ static NSInteger pageIndex;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    TTMineViewController *controller = [[TTMineViewController alloc]init];
-    controller.transitioningDelegate = self;
-    controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [_swipeLeftInteractiveTransition wireToViewController:controller];
-    [self presentViewController:controller animated:YES completion:nil];
+     _selectIndex = indexPath.row;
+    
 }
 
 

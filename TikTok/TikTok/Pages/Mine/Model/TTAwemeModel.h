@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *desc;
 
 @property(nonatomic,assign)CGFloat rate;
+
+@property (nonatomic,copy) NSString  *aweme_id;
 @end
 
 

@@ -36,14 +36,14 @@
     
     ///MARK:获取当前VC
     TTMineViewController *minePageController = fromVC.viewControllers.firstObject;
-    UIView *selectCell = (TTProfileCollectionViewCell *)[minePageController.profileCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:minePageController.selectIndex inSection:1]];
+    UIView *selectCell = (TTProfileCollectionViewCell *)[minePageController.listCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:minePageController.selectIndex inSection:1]];
     
     ///MARK:添加跳转VC到transitionContext
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
     
     ///MARK:获取当前CollectionView的Cell Frame
-    CGRect initialFrame = [minePageController.profileCollectionView convertRect:selectCell.frame toView:[minePageController.profileCollectionView superview]];
+    CGRect initialFrame = [minePageController.listCollectionView convertRect:selectCell.frame toView:[minePageController.listCollectionView superview]];
     
     ///MARK:
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
