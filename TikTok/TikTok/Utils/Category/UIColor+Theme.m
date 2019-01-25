@@ -76,4 +76,8 @@
     return ColorFromRGBA(255.0, 255.0, 255.0, 0.6);
 }
 
++(UIColor *)ColorGrayLight{
+    return ColorFromRGBA(40.0, 40.0, 40.0, 1.0);
+}
+
 @end

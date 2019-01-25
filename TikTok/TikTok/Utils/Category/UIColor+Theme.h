@@ -38,4 +38,6 @@
 +(UIColor *)ColorWhiteAlpha20;
 
 +(UIColor *)ColorWhiteAlpha60;
+
++(UIColor *)ColorGrayLight;
 @end

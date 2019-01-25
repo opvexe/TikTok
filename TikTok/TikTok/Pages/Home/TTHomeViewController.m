@@ -11,6 +11,7 @@
 #import "TTHomeTableViewCell.h"
 #import "TTNavigationView.h"
 #import "TTCommentShowView.h"
+#import "TTShareShowView.h"
 @interface TTHomeViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
@@ -172,7 +173,9 @@ UIViewControllerTransitioningDelegate
         }
             break;
         case TTPlayerTableClickTypeShare:{
-            
+            TTShareShowView *share = [TTShareShowView creatViewComplelte:^(NSInteger selectIndexPath) {
+                
+            }];
         }
             break;
         case TTPlayerTableClickTypeAlbum:{

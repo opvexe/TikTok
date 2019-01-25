@@ -62,6 +62,8 @@
 		D0EB58DD21F98F1B00F1AB74 /* TTDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DC21F98F1B00F1AB74 /* TTDismissingAnimator.m */; };
 		D0EB58E021F9975E00F1AB74 /* TTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */; };
 		D0EB58E521F9AE7400F1AB74 /* TTCommentShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */; };
+		D0F18F5E21FA9960007D6AB7 /* TTShareShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F5D21FA9960007D6AB7 /* TTShareShowView.m */; };
+		D0F18F6121FAB022007D6AB7 /* TTAnimationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F6021FAB022007D6AB7 /* TTAnimationButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +199,10 @@
 		D0EB58DF21F9975E00F1AB74 /* TTNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTNavigationView.m; sourceTree = "<group>"; };
 		D0EB58E321F9AE7400F1AB74 /* TTCommentShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCommentShowView.h; sourceTree = "<group>"; };
 		D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCommentShowView.m; sourceTree = "<group>"; };
+		D0F18F5C21FA9960007D6AB7 /* TTShareShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTShareShowView.h; sourceTree = "<group>"; };
+		D0F18F5D21FA9960007D6AB7 /* TTShareShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTShareShowView.m; sourceTree = "<group>"; };
+		D0F18F5F21FAB022007D6AB7 /* TTAnimationButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAnimationButton.h; sourceTree = "<group>"; };
+		D0F18F6021FAB022007D6AB7 /* TTAnimationButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAnimationButton.m; sourceTree = "<group>"; };
 		F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.release.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -640,6 +646,10 @@
 			children = (
 				D0EB58E321F9AE7400F1AB74 /* TTCommentShowView.h */,
 				D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */,
+				D0F18F5C21FA9960007D6AB7 /* TTShareShowView.h */,
+				D0F18F5D21FA9960007D6AB7 /* TTShareShowView.m */,
+				D0F18F5F21FAB022007D6AB7 /* TTAnimationButton.h */,
+				D0F18F6021FAB022007D6AB7 /* TTAnimationButton.m */,
 			);
 			path = PopView;
 			sourceTree = "<group>";
@@ -844,8 +854,10 @@
 				D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */,
 				D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */,
 				D059B67A21F84624004E4FC0 /* TTVideoViewController.m in Sources */,
+				D0F18F5E21FA9960007D6AB7 /* TTShareShowView.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
+				D0F18F6121FAB022007D6AB7 /* TTAnimationButton.m in Sources */,
 				D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */,
 				D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */,
 				D08A0C0B21F5685A00F8D7D9 /* UIFont+Category.m in Sources */,

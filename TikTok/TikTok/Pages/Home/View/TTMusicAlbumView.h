@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TTMusicAlbumView : UIView
 
-@property(nonatomic,copy)NSString *albumURL;
+@property (nonatomic, strong) UIImageView      *album;
 
 - (void)startAnimation:(CGFloat)rate;
 

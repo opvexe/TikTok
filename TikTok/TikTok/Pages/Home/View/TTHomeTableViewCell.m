@@ -23,9 +23,12 @@
 @property(nonatomic,strong)UILabel *desc;
 @property(nonatomic,strong)TTScrollLabel *srollView;
 @property(nonatomic,strong)FLAnimatedImageView *musicIcon;
-@property(nonatomic,strong)UIButton *pause;
+@property(nonatomic,strong)FLAnimatedImageView *pause;
 @property(nonatomic,strong)TTAwemeModel *model;
 @property(nonatomic,strong)CALayer *backgroudLayer;
+@property(nonatomic, assign)NSTimeInterval lastTapTime;
+@property(nonatomic, assign)CGPoint lastTapPoint;
+@property(nonatomic,assign)BOOL isPause;
 @end
 @implementation TTHomeTableViewCell
 
@@ -66,20 +69,16 @@
         iv;
     });
     
-    UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGesture:)];
     [self.container addGestureRecognizer:singleTapGesture];
     
     _pause = ({
-        UIButton *iv = [UIButton buttonWithType:UIButtonTypeCustom];
-        iv.showsTouchWhenHighlighted =NO;
-        iv.clipsToBounds = YES;
+        FLAnimatedImageView *iv = [[FLAnimatedImageView alloc]init];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds =YES;
         [self.container addSubview:iv];
-        [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateNormal];
-        [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateHighlighted];
-        [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateSelected];
-        [iv setImage:[UIImage imageNamed:@"icon_play_pause"] forState:UIControlStateDisabled];
-        [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
-        iv.tag = TTPlayerTableClickTypePlay;
+        iv.image = [UIImage imageNamed:@"icon_play_pause"];
+        iv.userInteractionEnabled = YES;
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.centerX.mas_equalTo(self.container);
             make.size.mas_equalTo(CGSizeMake(52.0f, 62.0f));
@@ -113,18 +112,14 @@
         [iv setImage:[UIImage imageNamed:@"icon_home_like_before"] forState:UIControlStateNormal];
         [iv setImage:[UIImage imageNamed:@"icon_home_like_after"] forState:UIControlStateSelected];
         [iv setTitle:@"1000" forState:UIControlStateNormal];
-        [iv setTitle:@"1000" forState:UIControlStateSelected];
         [iv setTitle:@"1000" forState:UIControlStateHighlighted];
-        [iv setTitle:@"1000" forState:UIControlStateDisabled];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
         [iv setTitleColor:[UIColor whiteColor]  forState:UIControlStateHighlighted];
         iv.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         iv.adjustsImageWhenHighlighted =NO;
         iv.showsTouchWhenHighlighted =NO;
-        iv.tag = TTPlayerTableClickTypeLikes;
-        [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
+//        iv.tag = TTPlayerTableClickTypeLikes;
+        [iv addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.avator);
@@ -149,8 +144,8 @@
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
         [iv.titleLabel setFont:[UIFont SYHelveticaFontOfSize:12.0f]];
+        iv.adjustsImageWhenHighlighted =NO;
         iv.showsTouchWhenHighlighted =NO;
-        iv.clipsToBounds = YES;
         iv.tag = TTPlayerTableClickTypeComment;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
@@ -177,8 +172,8 @@
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [iv setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
         [iv.titleLabel setFont:[UIFont SYHelveticaFontOfSize:12.0f]];
+        iv.adjustsImageWhenHighlighted =NO;
         iv.showsTouchWhenHighlighted =NO;
-        iv.clipsToBounds = YES;
         iv.tag = TTPlayerTableClickTypeShare;
         [iv addTarget:self action:@selector(Click:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
@@ -300,18 +295,92 @@
     [self.shared setTitle:[NSString formatCount:[model.statistics.share_count integerValue]] forState:UIControlStateNormal];
     [self.likes setTitle:[NSString formatCount:[model.statistics.digg_count integerValue]] forState:UIControlStateNormal];
     [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
-    self.albumView.albumURL = model.music.cover_thumb.url_list.firstObject;
+    [self.albumView.album  sd_setImageWithURL:[NSURL URLWithString:model.music.cover_thumb.url_list.firstObject]];
     [self.albumView startAnimation:model.rate];
 }
 
 
-#pragma mark SDCycleScrollViewDelegate
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    NSLog(@"%ld 滚动文字",index);
+-(void)likeClick:(UIButton *)sender{
+    sender.selected = !sender.selected;
 }
 
-- (void)handleGesture:(UITapGestureRecognizer *)sender {
-    NSLog(@"单击 暂停");
+
+- (void)singleTapGesture:(UITapGestureRecognizer *)sender {
+    
+    CGPoint point = [sender locationInView:_container];
+    NSTimeInterval time = [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970];
+    
+    if (time - _lastTapTime > 0.25f) {
+        
+        NSLog(@"pause");
+        [self performSelector:@selector(singleTapAction) withObject:nil afterDelay:0.25f];
+    }else{
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapAction) object: nil];
+        [self showLikeAnimation:point old:_lastTapPoint];
+    }
+    
+    _lastTapPoint = point;
+    _lastTapTime = time;
+}
+
+- (void)singleTapAction {
+    
+    ///mark: 暂停
+    if (_isPause) {
+        
+        _pause.hidden = NO;
+        _pause.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        _pause.alpha = 1.0f;
+        
+        [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            self.pause.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        } completion:^(BOOL finished) {
+            
+            self.isPause = NO;
+            [self setNeedsLayout];
+        }];
+        
+    }else{
+        
+        [UIView animateWithDuration:0.25f animations:^{
+            
+            self.pause.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.pause setHidden:YES];
+            self.isPause = YES;
+        }];
+    }
+}
+
+-(void)showLikeAnimation:(CGPoint)new old:(CGPoint)old{
+    
+    UIImageView *likeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_home_like_after"]];
+    CGFloat K = ((old.y - new.y))/((old.x -new.x));
+    K = fabs(K)<0.5?K:(K > 0 ? 0.5f : -0.5f);
+    CGFloat angle = M_PI_4 * -K;
+    likeImageView.frame = CGRectMake(new.x, new.y, 80.0f, 80.0f);
+    likeImageView.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(angle), 0.8, 1.80f);
+    [self.container addSubview:likeImageView];
+    
+    [UIView animateWithDuration:0.2f delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        likeImageView.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(angle), 1.0f, 1.0f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5f
+                              delay:0.5f
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             likeImageView.transform = CGAffineTransformScale(CGAffineTransformMakeRotation(angle), 3.0f, 3.0f);
+                             likeImageView.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             [likeImageView removeFromSuperview];
+                            [self setNeedsLayout];
+                         }];
+    }];
+    
 }
 
 @end
