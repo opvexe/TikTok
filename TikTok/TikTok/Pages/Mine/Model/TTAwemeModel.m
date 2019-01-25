@@ -20,7 +20,7 @@
 
 @implementation TTAwemeVideoModel
 +(NSDictionary*)mj_objectClassInArray{
-    return @{@"dynamic_cover":@"TTAwemeCoverModel"};
+    return @{@"dynamic_cover":@"TTAwemeCoverModel",@"play_addr":@"TTAwemeCoverModel"};
 }
 
 @end

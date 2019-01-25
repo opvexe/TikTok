@@ -64,6 +64,8 @@
 		D0EB58E521F9AE7400F1AB74 /* TTCommentShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EB58E421F9AE7400F1AB74 /* TTCommentShowView.m */; };
 		D0F18F5E21FA9960007D6AB7 /* TTShareShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F5D21FA9960007D6AB7 /* TTShareShowView.m */; };
 		D0F18F6121FAB022007D6AB7 /* TTAnimationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F6021FAB022007D6AB7 /* TTAnimationButton.m */; };
+		D0F18F6421FAFB26007D6AB7 /* TTAVPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F6321FAFB26007D6AB7 /* TTAVPlayerManager.m */; };
+		D0F18F6721FB0A6E007D6AB7 /* TTCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F18F6621FB0A6E007D6AB7 /* TTCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +205,10 @@
 		D0F18F5D21FA9960007D6AB7 /* TTShareShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTShareShowView.m; sourceTree = "<group>"; };
 		D0F18F5F21FAB022007D6AB7 /* TTAnimationButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAnimationButton.h; sourceTree = "<group>"; };
 		D0F18F6021FAB022007D6AB7 /* TTAnimationButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAnimationButton.m; sourceTree = "<group>"; };
+		D0F18F6221FAFB26007D6AB7 /* TTAVPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAVPlayerManager.h; sourceTree = "<group>"; };
+		D0F18F6321FAFB26007D6AB7 /* TTAVPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAVPlayerManager.m; sourceTree = "<group>"; };
+		D0F18F6521FB0A6E007D6AB7 /* TTCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCacheManager.h; sourceTree = "<group>"; };
+		D0F18F6621FB0A6E007D6AB7 /* TTCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCacheManager.m; sourceTree = "<group>"; };
 		F49CC4CCACB7BBA8C4D6B4CF /* Pods-TikTok.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TikTok.release.xcconfig"; path = "Pods/Target Support Files/Pods-TikTok/Pods-TikTok.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -606,6 +612,10 @@
 			children = (
 				C2358FBF21F8AA9800298E14 /* TTPlayerView.h */,
 				C2358FC021F8AA9800298E14 /* TTPlayerView.m */,
+				D0F18F6221FAFB26007D6AB7 /* TTAVPlayerManager.h */,
+				D0F18F6321FAFB26007D6AB7 /* TTAVPlayerManager.m */,
+				D0F18F6521FB0A6E007D6AB7 /* TTCacheManager.h */,
+				D0F18F6621FB0A6E007D6AB7 /* TTCacheManager.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -843,12 +853,14 @@
 				D08A0C2121F572EE00F8D7D9 /* TTBaseViewController.m in Sources */,
 				D08A0C0921F5685A00F8D7D9 /* Foundation+Log.m in Sources */,
 				D0EB58DD21F98F1B00F1AB74 /* TTDismissingAnimator.m in Sources */,
+				D0F18F6721FB0A6E007D6AB7 /* TTCacheManager.m in Sources */,
 				D0EB58D021F959BD00F1AB74 /* TTInteractiveTransition.m in Sources */,
 				D08A0C0521F5685A00F8D7D9 /* UIViewController+WDNavigatonBarAppearance.m in Sources */,
 				D0EB58DA21F98F0C00F1AB74 /* TTPresentingAnimator.m in Sources */,
 				D0EB58D421F95A9C00F1AB74 /* TTCommentViewController.m in Sources */,
 				D08A0C1321F568DB00F8D7D9 /* TTTabBarControllerConfig.m in Sources */,
 				D08A0C0621F5685A00F8D7D9 /* UIImage+Zip.m in Sources */,
+				D0F18F6421FAFB26007D6AB7 /* TTAVPlayerManager.m in Sources */,
 				D059B67621F80720004E4FC0 /* TTAwemeModel.m in Sources */,
 				D08A0C2D21F5733B00F8D7D9 /* TTMineViewController.m in Sources */,
 				D059B66C21F6FDFF004E4FC0 /* TTProfileCollectionViewCell.m in Sources */,

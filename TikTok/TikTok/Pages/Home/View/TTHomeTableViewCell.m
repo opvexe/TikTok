@@ -51,11 +51,8 @@
     });
     
     _playerView = ({
-        TTPlayerView *iv = [[TTPlayerView alloc]init];
+        TTPlayerView *iv = [[TTPlayerView alloc]initWithFrame:CGRectZero];
         [self.contentView addSubview:iv];
-        [iv mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.contentView);
-        }];
         iv;
     });
     
@@ -278,6 +275,9 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.backgroudLayer.frame = self.contentView.bounds;
+    [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.contentView);
+    }];
 }
 
 
@@ -297,6 +297,8 @@
     [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
     [self.albumView.album  sd_setImageWithURL:[NSURL URLWithString:model.music.cover_thumb.url_list.firstObject]];
     [self.albumView startAnimation:model.rate];
+    
+    [_playerView setPlayerWithUrl:model.video.play_addr.url_list.firstObject];
 }
 
 

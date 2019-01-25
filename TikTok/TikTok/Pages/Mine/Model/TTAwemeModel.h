@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong)TTAwemeCoverModel *origin_cover;
 
+@property(nonatomic,strong)TTAwemeCoverModel *play_addr;
 @end
 
 
