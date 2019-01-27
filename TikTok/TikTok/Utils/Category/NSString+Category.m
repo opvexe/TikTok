@@ -562,4 +562,10 @@ NSString *cacheSizeStr(NSInteger _totalSize){
     return size;
 }
 
+- (NSURL *)urlScheme:(NSString *)scheme {
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[NSURL URLWithString:self] resolvingAgainstBaseURL:NO];
+    components.scheme = scheme;
+    return [components URL];
+}
+
 @end
