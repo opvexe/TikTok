@@ -11,7 +11,7 @@
 #import "TTScrollLabel.h"
 #import "TTPlayerView.h"
 #import "TTUserModel.h"
-@interface TTHomeTableViewCell()<SDCycleScrollViewDelegate>
+@interface TTHomeTableViewCell()<SDCycleScrollViewDelegate,AVPlayerUpdateDelegate>
 @property(nonatomic,strong)UIView *container;
 @property(nonatomic,strong)TTPlayerView *playerView;
 @property(nonatomic,strong)UIButton *avator;
@@ -29,6 +29,7 @@
 @property(nonatomic, assign)NSTimeInterval lastTapTime;
 @property(nonatomic, assign)CGPoint lastTapPoint;
 @property(nonatomic,assign)BOOL isPause;
+@property (nonatomic, strong) UIView                   *playerStatusBar;
 @end
 @implementation TTHomeTableViewCell
 
@@ -51,8 +52,12 @@
     });
     
     _playerView = ({
-        TTPlayerView *iv = [[TTPlayerView alloc]initWithFrame:CGRectZero];
+        TTPlayerView *iv = [TTPlayerView new];
+        iv.delegate = self;
         [self.contentView addSubview:iv];
+        [iv mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
         iv;
     });
     
@@ -69,10 +74,23 @@
     UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGesture:)];
     [self.container addGestureRecognizer:singleTapGesture];
     
+    _playerStatusBar = [[UIView alloc]init];
+    _playerStatusBar.backgroundColor = [UIColor whiteColor];
+    [_playerStatusBar setHidden:YES];
+    [_container addSubview:_playerStatusBar];
+    [_playerStatusBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.bottom.equalTo(self).inset(49.5f + TT_TabbarSafeBottomMargin);
+        make.width.mas_equalTo(1.0f);
+        make.height.mas_equalTo(0.5f);
+    }];
+    
+    
     _pause = ({
         FLAnimatedImageView *iv = [[FLAnimatedImageView alloc]init];
         iv.contentMode = UIViewContentModeScaleAspectFill;
         iv.clipsToBounds =YES;
+        iv.hidden = YES;
         [self.container addSubview:iv];
         iv.image = [UIImage imageNamed:@"icon_play_pause"];
         iv.userInteractionEnabled = YES;
@@ -115,7 +133,7 @@
         iv.titleLabel.font = [UIFont systemFontOfSize:12.0f];
         iv.adjustsImageWhenHighlighted =NO;
         iv.showsTouchWhenHighlighted =NO;
-//        iv.tag = TTPlayerTableClickTypeLikes;
+        //        iv.tag = TTPlayerTableClickTypeLikes;
         [iv addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [iv layoutTextWithImageButtonStyle:LayoutTextUnderImageButton withSpace:5.0f];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -274,21 +292,31 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.backgroudLayer.frame = self.contentView.bounds;
-    [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView);
-    }];
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    _backgroudLayer.frame = self.contentView.bounds;
+    [CATransaction commit];
 }
 
-
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    
+    [_playerView cancelLoading];
+    [_pause setHidden:YES];
+    
+    [_avator setImage:[UIImage imageNamed:@"img_find_default"] forState:UIControlStateNormal];
+    [_albumView resetView];
+}
 -(void)Click:(UIButton *)sender{
     if (self.delegate) {
         [self.delegate playerClickType:sender.tag model:_model];
     }
 }
 
+
 -(void)InitDataWithModel:(TTAwemeModel *)model{
     _model = model;
+    _isPause = YES;
     self.desc.text = model.desc;
     self.nickName.text = [NSString stringWithFormat:@"@ %@",model.author.nickname];
     [self.comment setTitle:[NSString formatCount:[model.statistics.comment_count integerValue]] forState:UIControlStateNormal];
@@ -298,7 +326,8 @@
     [self.albumView.album  sd_setImageWithURL:[NSURL URLWithString:model.music.cover_thumb.url_list.firstObject]];
     [self.albumView startAnimation:model.rate];
     
-    [_playerView setPlayerWithUrl:model.video.play_addr.url_list.firstObject];
+    [_playerView startDownloadTask:[[NSURL alloc] initWithString:model.video.play_addr_lowbr.url_list.firstObject] isBackground:NO];
+    [_playerView setPlayerWithUrl:model.video.play_addr_lowbr.url_list.firstObject];
 }
 
 
@@ -320,6 +349,7 @@
         
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapAction) object: nil];
         [self showLikeAnimation:point old:_lastTapPoint];
+        [_playerView updatePlayerState];
     }
     
     _lastTapPoint = point;
@@ -334,7 +364,7 @@
         _pause.hidden = NO;
         _pause.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
         _pause.alpha = 1.0f;
-        
+        [self pauseItems];
         [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             self.pause.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
@@ -346,6 +376,7 @@
         
     }else{
         
+            [self play];
         [UIView animateWithDuration:0.25f animations:^{
             
             self.pause.alpha = 0.0f;
@@ -379,10 +410,73 @@
                          }
                          completion:^(BOOL finished) {
                              [likeImageView removeFromSuperview];
-                            [self setNeedsLayout];
+                             [self setNeedsLayout];
                          }];
     }];
     
 }
 
+
+//播放进度更新回调方法
+-(void)onProgressUpdate:(CGFloat)current total:(CGFloat)total{
+    
+    
+}
+
+//播放状态更新回调方法
+-(void)onPlayItemStatusUpdate:(AVPlayerItemStatus)status{
+    
+    switch (status) {
+        case AVPlayerItemStatusUnknown:
+            [self replay];
+            break;
+        case AVPlayerItemStatusReadyToPlay:
+            [self play];
+            break;
+        case AVPlayerItemStatusFailed:
+            NSLog(@"加载失败");
+            [self replay];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)play {
+    [_playerView play];
+    [_pause setHidden:YES];
+}
+
+- (void)pauseItems {
+    [_playerView pause];
+    [_pause setHidden:NO];
+}
+
+- (void)replay {
+    [_playerView replay];
+    [_pause setHidden:YES];
+}
+
+
+-(void)startLoadingPlayItemAnim:(BOOL)isStart {
+    if (isStart) {
+        
+        _playerStatusBar.backgroundColor = [UIColor whiteColor];
+        [_playerStatusBar setHidden:NO];
+        [_playerStatusBar.layer removeAllAnimations];
+        
+        CABasicAnimation *group =[[CABasicAnimation alloc]init];
+        group.duration = 0.5f;
+        group.beginTime = CACurrentMediaTime() +0.5f;
+        group.repeatCount = MAXFLOAT;
+        group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        
+        
+    }else{
+        [self.playerStatusBar.layer removeAllAnimations];
+        [self.playerStatusBar setHidden:YES];
+    }
+}
 @end

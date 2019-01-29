@@ -269,8 +269,38 @@ NSString *cacheSizeStr(NSInteger _totalSize);
  */
 +(NSDictionary *)readJson2DicWithFileName:(NSString *)fileName;
 
+
+/**
+ * 评论人数转换 100000  == 10万
+
+ @param count 数量
+ @return return value description
+ */
 + (NSString *)formatCount:(NSInteger)count;
 
+
+/**
+ * 单行计算高度 包含 表情
+
+ @param font 字体
+ @return 高度
+ */
 - (CGSize)singleLineSizeWithAttributeText:(UIFont *)font;
+
+/**
+ * 多行计算高度 包含表情在内计算
+
+ @param width 宽度
+ @param font 字体
+ @return return value description高度
+ */
 - (CGSize)multiLineSizeWithAttributeText:(CGFloat)width font:(UIFont *)font;
+
+/**
+ * 修改URL 前缀 http,https  换成 scream 等等
+
+ @param scheme url
+ @return 修改后的
+ */
+- (NSURL *)urlScheme:(NSString *)scheme;
 @end
