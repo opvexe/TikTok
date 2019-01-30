@@ -44,6 +44,7 @@ UIViewControllerTransitioningDelegate
     [super viewDidLoad];
     [self configView];
     [self refreshLoadDataSoucre];
+
     _isCurPlayerPause = NO;
 }
 
