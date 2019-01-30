@@ -45,7 +45,7 @@ UIViewControllerTransitioningDelegate
     [self configView];
     [self refreshLoadDataSoucre];
     _isCurPlayerPause = NO;
-    NSLog(@"提价 ===1 ");
+    NSLog(@"提价 ===1222222222 ");
 }
 
 -(void)configView{
