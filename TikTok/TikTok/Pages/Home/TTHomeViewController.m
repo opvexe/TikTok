@@ -12,15 +12,18 @@
 #import "TTNavigationView.h"
 #import "TTCommentShowView.h"
 #import "TTShareShowView.h"
+#import "TTAVPlayerManager.h"
 @interface TTHomeViewController ()<
 UITableViewDelegate,
 UITableViewDataSource,
 TTPlayerTableClickDelegate,
+UIScrollViewDelegate,
 UIViewControllerTransitioningDelegate
 >
 @property(nonatomic,strong)UITableView *tableListView;
 @property(nonatomic,strong)NSMutableArray *lists;
 @property(nonatomic,strong)TTNavigationView *navgationView;
+@property (nonatomic, assign) BOOL                              isCurPlayerPause;
 @end
 
 @implementation TTHomeViewController
@@ -41,10 +44,17 @@ UIViewControllerTransitioningDelegate
     [super viewDidLoad];
     [self configView];
     [self refreshLoadDataSoucre];
+
+
+    _isCurPlayerPause = NO;
+
     
+
     NSLog(@"测试 == 分支1");
     NSLog(@"测试 == 分支1");
     NSLog(@"测试 == 分支1");
+
+
 }
 
 -(void)configView{
@@ -115,6 +125,14 @@ UIViewControllerTransitioningDelegate
     NSDictionary *awemes =  [NSString readJson2DicWithFileName:@"awemes"];
     self.lists = [TTAwemeModel mj_objectArrayWithKeyValuesArray:awemes[@"data"]];
     [self.tableListView reloadData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        NSIndexPath *curIndexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+        [self.tableListView scrollToRowAtIndexPath:curIndexPath atScrollPosition:UITableViewScrollPositionMiddle
+                                      animated:NO];
+        [self addObserver:self forKeyPath:@"currentIndex" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:nil];
+    });
 }
 
 #pragma mark - UITableViewDelegate && UITableViewDataSource
@@ -132,6 +150,7 @@ UIViewControllerTransitioningDelegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TTHomeTableViewCell *cell  = [TTHomeTableViewCell CellWithTableView:tableView];
     [cell InitDataWithModel:self.lists[indexPath.row]];
+    [cell startDownloadBackgroundTask];
     cell.delegate = self;
     return cell;
 }
@@ -194,5 +213,61 @@ UIViewControllerTransitioningDelegate
     }
 }
 
+#pragma ScrollView delegate   ///用户已经停止拖拽scrollView，就会调用这个方法
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+     dispatch_async(dispatch_get_main_queue(), ^{
+         
+         CGPoint transPoint = [scrollView.panGestureRecognizer translationInView:scrollView];
+         
+         //UITableView禁止响应其他滑动手势
+         scrollView.panGestureRecognizer.enabled = NO;
+         
+         NSLog(@"%@", NSStringFromCGPoint(transPoint));
+        
+         if (transPoint.y < -50 &&self.currentIndex < self.lists.count - 1) {
+             self.currentIndex ++ ; ///向下
+         }else if (transPoint.y>50&&self.currentIndex>0){
+             self.currentIndex -- ; ///向上
+         }
+        
+         [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+             
+             [self.tableListView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.currentIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+         } completion:^(BOOL finished) {
+             //UITableView可以响应其他滑动手势
+             scrollView.panGestureRecognizer.enabled = YES;
+         }];
+     });
+}
 
+#pragma KVO
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    //观察currentIndex变化
+    if ([keyPath isEqualToString:@"currentIndex"]) {
+        //设置用于标记当前视频是否播放的BOOL值为NO
+        _isCurPlayerPause = NO;
+        //获取当前显示的cell
+        TTHomeTableViewCell *cell = [self.tableListView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]];
+        [cell startDownloadHighPriorityTask];
+        __weak typeof (cell) wcell = cell;
+        __weak typeof (self) wself = self;
+        //判断当前cell的视频源是否已经准备播放
+        if(cell.isPlayerReady) {
+            //播放视频
+            [cell replay];
+        }else {
+            [[TTAVPlayerManager shareManager] pauseAll];
+            //当前cell的视频源还未准备好播放，则实现cell的OnPlayerReady Block 用于等待视频准备好后通知播放
+            cell.onPlayerReady = ^{
+                NSIndexPath *indexPath = [wself.tableListView indexPathForCell:wcell];
+                if(!wself.isCurPlayerPause && indexPath && indexPath.row == wself.currentIndex) {
+                    [wcell play];
+                }
+            };
+        }
+    } else {
+        return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
 @end
