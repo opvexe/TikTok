@@ -42,7 +42,8 @@ UIViewControllerTransitioningDelegate
     [self configView];
     [self refreshLoadDataSoucre];
     
-    NSLog(@"测试==");
+    NSLog(@"测试==111111");
+    NSLog(@"测试==111111");
 }
 
 -(void)configView{
