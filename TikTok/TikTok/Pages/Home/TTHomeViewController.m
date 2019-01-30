@@ -45,16 +45,7 @@ UIViewControllerTransitioningDelegate
     [self configView];
     [self refreshLoadDataSoucre];
 
-
     _isCurPlayerPause = NO;
-
-    
-
-    NSLog(@"测试 == 分支1");
-    NSLog(@"测试 == 分支1");
-    NSLog(@"测试 == 分支1");
-
-
 }
 
 -(void)configView{
