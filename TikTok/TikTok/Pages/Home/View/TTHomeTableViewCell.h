@@ -9,6 +9,7 @@
 #import "TTBaseTableViewCell.h"
 #import "TTAwemeModel.h"
 NS_ASSUME_NONNULL_BEGIN
+typedef void (^OnPlayerReady)(void);
 
 typedef NS_ENUM(NSUInteger, TTPlayerTableClickType) {
     TTPlayerTableClickTypePlay,
@@ -29,6 +30,13 @@ typedef NS_ENUM(NSUInteger, TTPlayerTableClickType) {
 
 @property(nonatomic,weak) id <TTPlayerTableClickDelegate>delegate;
 
+- (void)startDownloadBackgroundTask;
+- (void)startDownloadHighPriorityTask;
+- (void)play;
+- (void)pause;
+- (void)replay;
+@property (nonatomic, strong) OnPlayerReady    onPlayerReady;
+@property (nonatomic, assign) BOOL             isPlayerReady;
 @end
 
 NS_ASSUME_NONNULL_END

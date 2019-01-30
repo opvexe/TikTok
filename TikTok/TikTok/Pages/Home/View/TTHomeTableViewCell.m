@@ -23,7 +23,7 @@
 @property(nonatomic,strong)UILabel *desc;
 @property(nonatomic,strong)TTScrollLabel *srollView;
 @property(nonatomic,strong)FLAnimatedImageView *musicIcon;
-@property(nonatomic,strong)FLAnimatedImageView *pause;
+@property(nonatomic,strong)FLAnimatedImageView *pauses;
 @property(nonatomic,strong)TTAwemeModel *model;
 @property(nonatomic,strong)CALayer *backgroudLayer;
 @property(nonatomic, assign)NSTimeInterval lastTapTime;
@@ -86,7 +86,7 @@
     }];
     
     
-    _pause = ({
+    _pauses = ({
         FLAnimatedImageView *iv = [[FLAnimatedImageView alloc]init];
         iv.contentMode = UIViewContentModeScaleAspectFill;
         iv.clipsToBounds =YES;
@@ -301,8 +301,10 @@
 -(void)prepareForReuse {
     [super prepareForReuse];
     
+      _isPlayerReady = NO;
+    
     [_playerView cancelLoading];
-    [_pause setHidden:YES];
+    [_pauses setHidden:YES];
     
     [_avator setImage:[UIImage imageNamed:@"img_find_default"] forState:UIControlStateNormal];
     [_albumView resetView];
@@ -313,6 +315,14 @@
     }
 }
 
+- (void)startDownloadBackgroundTask {
+    [_playerView startDownloadTask:[[NSURL alloc] initWithString:_model.video.play_addr_lowbr.url_list.firstObject] isBackground:NO];
+    [_playerView setPlayerWithUrl:_model.video.play_addr_lowbr.url_list.firstObject];
+}
+
+- (void)startDownloadHighPriorityTask {
+    [_playerView startDownloadTask:[[NSURL alloc] initWithString:_model.video.play_addr_lowbr.url_list.firstObject] isBackground:NO];
+}
 
 -(void)InitDataWithModel:(TTAwemeModel *)model{
     _model = model;
@@ -325,9 +335,6 @@
     [self.avator sd_setImageWithURL:[NSURL URLWithString:model.author.avatar_medium.url_list.firstObject] forState:UIControlStateNormal];
     [self.albumView.album  sd_setImageWithURL:[NSURL URLWithString:model.music.cover_thumb.url_list.firstObject]];
     [self.albumView startAnimation:model.rate];
-    
-    [_playerView startDownloadTask:[[NSURL alloc] initWithString:model.video.play_addr_lowbr.url_list.firstObject] isBackground:NO];
-    [_playerView setPlayerWithUrl:model.video.play_addr_lowbr.url_list.firstObject];
 }
 
 
@@ -361,13 +368,13 @@
     ///mark: 暂停
     if (_isPause) {
         
-        _pause.hidden = NO;
-        _pause.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
-        _pause.alpha = 1.0f;
+        _pauses.hidden = NO;
+        _pauses.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
+        _pauses.alpha = 1.0f;
         [self pauseItems];
         [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
             
-            self.pause.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            self.pauses.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         } completion:^(BOOL finished) {
             
             self.isPause = NO;
@@ -379,9 +386,9 @@
             [self play];
         [UIView animateWithDuration:0.25f animations:^{
             
-            self.pause.alpha = 0.0f;
+            self.pauses.alpha = 0.0f;
         } completion:^(BOOL finished) {
-            [self.pause setHidden:YES];
+            [self.pauses setHidden:YES];
             self.isPause = YES;
         }];
     }
@@ -428,14 +435,18 @@
     
     switch (status) {
         case AVPlayerItemStatusUnknown:
-            [self replay];
+       
             break;
         case AVPlayerItemStatusReadyToPlay:
-            [self play];
+                _isPlayerReady = YES;
+            
+            if(_onPlayerReady) {
+                _onPlayerReady();
+            }
             break;
         case AVPlayerItemStatusFailed:
             NSLog(@"加载失败");
-            [self replay];
+        
             break;
         default:
             break;
@@ -444,17 +455,17 @@
 
 - (void)play {
     [_playerView play];
-    [_pause setHidden:YES];
+    [_pauses setHidden:YES];
 }
 
 - (void)pauseItems {
     [_playerView pause];
-    [_pause setHidden:NO];
+    [_pauses setHidden:NO];
 }
 
 - (void)replay {
     [_playerView replay];
-    [_pause setHidden:YES];
+    [_pauses setHidden:YES];
 }
 
 
