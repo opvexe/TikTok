@@ -41,10 +41,8 @@ UIViewControllerTransitioningDelegate
     [super viewDidLoad];
     [self configView];
     [self refreshLoadDataSoucre];
-    
-    NSLog(@"测试 == 分支1");
-    NSLog(@"测试 == 分支1");
-    NSLog(@"测试 == 分支1");
+    NSLog(@" 测试分支1 == 提交");
+    NSLog(@" 测试分支1 == 提交");
 }
 
 -(void)configView{
