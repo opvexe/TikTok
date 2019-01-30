@@ -18,7 +18,7 @@
 - 查看所有配置 git config -l
 - 设置别名 git config --global alias.st status
 
-#### 暂存区
+#### 添加到暂存区
 - git add <file>
 - git add .
 
@@ -28,3 +28,6 @@
 - git commit - a
 - 提交信息 git commit -am "提交信息
 - 修改最后一次提交信息 git commit -amend 
+
+#### 提交版本库
+- git push 
