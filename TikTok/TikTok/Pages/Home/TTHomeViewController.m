@@ -46,8 +46,6 @@ UIViewControllerTransitioningDelegate
     [self refreshLoadDataSoucre];
 
     _isCurPlayerPause = NO;
-    NSLog(@"主干== 提交 == 0");
-     NSLog(@"主干== 提交 == 1");
 }
 
 -(void)configView{
