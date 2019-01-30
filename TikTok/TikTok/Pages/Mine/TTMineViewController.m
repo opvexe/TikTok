@@ -43,6 +43,7 @@ static NSInteger pageIndex;
     [self setStatusBarBackgroundColor:[UIColor clearColor]];
     [self setNavigationBarBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]];
     [self setStatusBarHidden:NO];
+    @"22222222222"
 }
 
 - (void)viewDidLoad {
