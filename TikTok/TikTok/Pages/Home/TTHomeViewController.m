@@ -44,9 +44,14 @@ UIViewControllerTransitioningDelegate
     [super viewDidLoad];
     [self configView];
     [self refreshLoadDataSoucre];
+<<<<<<< HEAD
 
     _isCurPlayerPause = NO;
     NSLog(@"主干== 提交 == ");
+=======
+    NSLog(@" 测试分支1 == 提交");
+    NSLog(@" 测试分支1 == 提交");
+>>>>>>> chuangjianfenzhi
 }
 
 -(void)configView{
