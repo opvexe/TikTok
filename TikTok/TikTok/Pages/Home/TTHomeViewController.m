@@ -47,6 +47,7 @@ UIViewControllerTransitioningDelegate
 
     _isCurPlayerPause = NO;
     
+    =======
 }
 
 -(void)configView{
