@@ -266,7 +266,7 @@
     return self;
 }
 
-- (void)start {
+- (void)start {  ///在线程队列中重写start，线程会叠加，卡死
     [self willChangeValueForKey:@"isExecuting"];
     _executing = YES;
     [self didChangeValueForKey:@"isExecuting"];
@@ -310,7 +310,7 @@
 //更新任务状态
 - (void)done {
     [super cancel];
-    if(_executing) {
+    if(_executing) {   //结束线程用到
         [self willChangeValueForKey:@"isFinished"];
         [self willChangeValueForKey:@"isExecuting"];
         _finished = YES;
