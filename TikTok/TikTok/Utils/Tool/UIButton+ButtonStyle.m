@@ -57,9 +57,9 @@
                     
                     self.titleEdgeInsets = (UIEdgeInsets){
                         .top    = 0,
-                        .left   = -self.currentImage.size.width,
+                        .left   = -self.currentImage.size.width - space,
                         .bottom = 0,
-                        .right  = self.currentImage.size.width,
+                        .right  = self.currentImage.size.width + space,
                     };
                     
                     self.imageEdgeInsets = (UIEdgeInsets){

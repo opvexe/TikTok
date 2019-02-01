@@ -17,4 +17,5 @@ pod 'Toast'
 pod 'FMDB'
 pod 'SDWebImage/GIF'
 pod 'SDCycleScrollView'
+pod 'FreeStreamer'
 end

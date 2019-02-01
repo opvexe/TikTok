@@ -19,11 +19,14 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - FreeStreamer (3.8.3):
+    - Reachability (~> 3.0)
   - IQKeyboardManager (6.1.1)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.6)
+  - Reachability (3.2)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
   - SDWebImage (4.4.2):
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - AFNetworking
   - CYLTabBarController
   - FMDB
+  - FreeStreamer
   - IQKeyboardManager
   - KLCPopup
   - Masonry
@@ -56,11 +60,13 @@ SPEC REPOS:
     - CYLTabBarController
     - FLAnimatedImage
     - FMDB
+    - FreeStreamer
     - IQKeyboardManager
     - KLCPopup
     - Masonry
     - MJExtension
     - MJRefresh
+    - Reachability
     - SDCycleScrollView
     - SDWebImage
     - Toast
@@ -71,16 +77,18 @@ SPEC CHECKSUMS:
   CYLTabBarController: fb72c648645336953d522407892c4f61b7b3f898
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  FreeStreamer: b205b0bf6a2e7855f935369145498f930eb27cac
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 0efa19656679d70a0f47cbe76e56c2271fe53a97
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: cc1b6dc8ce0aac00a310795d2bdfdc709482a677
+PODFILE CHECKSUM: dfec6e6a7613408cf43014d7297b1bb44446c6fc
 
 COCOAPODS: 1.5.3
