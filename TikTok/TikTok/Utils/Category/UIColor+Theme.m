@@ -80,4 +80,8 @@
     return ColorFromRGBA(40.0, 40.0, 40.0, 1.0);
 }
 
++(UIColor *)ColorThemeRed{
+    return ColorFromRGBA(241.0, 47.0, 84.0, 1.0);
+}
+
 @end

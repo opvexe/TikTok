@@ -30,6 +30,7 @@
 		D059B67A21F84624004E4FC0 /* TTVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67921F84624004E4FC0 /* TTVideoViewController.m */; };
 		D059B67F21F84EFC004E4FC0 /* TTBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67E21F84EFC004E4FC0 /* TTBaseTableViewCell.m */; };
 		D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */; };
+		D07BB12B22056A4D0045482B /* TTLikesView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BB12A22056A4D0045482B /* TTLikesView.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -132,6 +133,8 @@
 		D059B68021F84F10004E4FC0 /* TTBaseTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTBaseTableViewCellProtocol.h; sourceTree = "<group>"; };
 		D059B68121F84FD2004E4FC0 /* TTHomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTHomeTableViewCell.h; sourceTree = "<group>"; };
 		D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTHomeTableViewCell.m; sourceTree = "<group>"; };
+		D07BB12922056A4D0045482B /* TTLikesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTLikesView.h; sourceTree = "<group>"; };
+		D07BB12A22056A4D0045482B /* TTLikesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTLikesView.m; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -313,6 +316,7 @@
 		D059B67021F718FA004E4FC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D07BB12822056A0C0045482B /* Likes */,
 				D0EB58E221F9ADE600F1AB74 /* PopView */,
 				D0EB58E121F9980B00F1AB74 /* ItemView */,
 				D0EB58CD21F9598A00F1AB74 /* Transition */,
@@ -351,6 +355,15 @@
 				D059B68021F84F10004E4FC0 /* TTBaseTableViewCellProtocol.h */,
 			);
 			path = BaseTableView;
+			sourceTree = "<group>";
+		};
+		D07BB12822056A0C0045482B /* Likes */ = {
+			isa = PBXGroup;
+			children = (
+				D07BB12922056A4D0045482B /* TTLikesView.h */,
+				D07BB12A22056A4D0045482B /* TTLikesView.m */,
+			);
+			path = Likes;
 			sourceTree = "<group>";
 		};
 		D08A0BAA21F5661C00F8D7D9 = {
@@ -891,6 +904,7 @@
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,
 				D059B65521F6D0D0004E4FC0 /* TTRightItemView.m in Sources */,
 				D059B66221F6FC6C004E4FC0 /* TTBaseCollectionViewCell.m in Sources */,
+				D07BB12B22056A4D0045482B /* TTLikesView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

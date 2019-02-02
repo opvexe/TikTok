@@ -65,8 +65,8 @@
 
     [UIView animateWithDuration:duration
                           delay:0
-         usingSpringWithDamping:0.8
-          initialSpringVelocity:1
+         usingSpringWithDamping:0.7 /// 弹簧效果
+          initialSpringVelocity:1.0 ///数值越大，开始的越快
                         options:UIViewAnimationOptionLayoutSubviews
                      animations:^{
                          toVC.view.center = CGPointMake(finalFrame.origin.x + finalFrame.size.width/2, finalFrame.origin.y + finalFrame.size.height/2);

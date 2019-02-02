@@ -472,16 +472,28 @@
         [_playerStatusBar setHidden:NO];
         [_playerStatusBar.layer removeAllAnimations];
         
-        CABasicAnimation *group =[[CABasicAnimation alloc]init];
+        CAAnimationGroup *group =[[CAAnimationGroup alloc]init];
         group.duration = 0.5f;
         group.beginTime = CACurrentMediaTime() +0.5f;
         group.repeatCount = MAXFLOAT;
         group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         
         
+        CABasicAnimation *scale = [CABasicAnimation animation];
+        scale.keyPath = @"transform.scale.x";
+        scale.fromValue = @(1.0f);
+        scale.toValue = @(1.0f*SCREEN_WIDTH);
         
+        CABasicAnimation *opacity = [CABasicAnimation animation];
+        opacity.keyPath = @"opacity";
+        opacity.fromValue = @(1.0f);
+        opacity.toValue =@(0.5f);
+        
+        [group setAnimations:@[scale,opacity]];
+        [self.playerStatusBar.layer addAnimation:group forKey:nil];
         
     }else{
+        
         [self.playerStatusBar.layer removeAllAnimations];
         [self.playerStatusBar setHidden:YES];
     }
