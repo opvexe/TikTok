@@ -46,7 +46,6 @@ UIViewControllerTransitioningDelegate
     [self refreshLoadDataSoucre];
 
     _isCurPlayerPause = NO;
-    
 }
 
 -(void)configView{
@@ -241,7 +240,6 @@ UIViewControllerTransitioningDelegate
         _isCurPlayerPause = NO;
         //获取当前显示的cell
         TTHomeTableViewCell *cell = [self.tableListView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]];
-        [cell startDownloadHighPriorityTask];
         __weak typeof (cell) wcell = cell;
         __weak typeof (self) wself = self;
         //判断当前cell的视频源是否已经准备播放

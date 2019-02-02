@@ -31,7 +31,6 @@ typedef NS_ENUM(NSUInteger, TTPlayerTableClickType) {
 @property(nonatomic,weak) id <TTPlayerTableClickDelegate>delegate;
 
 - (void)startDownloadBackgroundTask;
-- (void)startDownloadHighPriorityTask;
 - (void)play;
 - (void)pause;
 - (void)replay;

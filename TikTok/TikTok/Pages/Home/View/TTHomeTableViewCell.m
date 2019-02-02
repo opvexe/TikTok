@@ -298,14 +298,13 @@
     [CATransaction commit];
 }
 
+///MARK: 调用重用池（下一个cell的调用）
 -(void)prepareForReuse {
     [super prepareForReuse];
     
-      _isPlayerReady = NO;
-    
+    _isPlayerReady = NO;
     [_playerView cancelLoading];
     [_pauses setHidden:YES];
-    
     [_avator setImage:[UIImage imageNamed:@"img_find_default"] forState:UIControlStateNormal];
     [_albumView resetView];
 }
@@ -320,9 +319,6 @@
     [_playerView setPlayerWithUrl:_model.video.play_addr_lowbr.url_list.firstObject];
 }
 
-- (void)startDownloadHighPriorityTask {
-    [_playerView startDownloadTask:[[NSURL alloc] initWithString:_model.video.play_addr_lowbr.url_list.firstObject] isBackground:NO];
-}
 
 -(void)InitDataWithModel:(TTAwemeModel *)model{
     _model = model;

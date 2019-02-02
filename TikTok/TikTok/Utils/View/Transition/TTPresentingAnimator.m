@@ -10,6 +10,8 @@
 #import "TTMineViewController.h"
 #import "TTHomeViewController.h"
 #import "TTProfileCollectionViewCell.h"
+#import "TTRootViewController.h"
+#import "TTBaseNavigationViewController.h"
 @implementation TTPresentingAnimator
 
 - (instancetype)init
@@ -32,30 +34,35 @@
     
     ///:获取跳转VC
     TTHomeViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UINavigationController *fromVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
+    ///MARK:当前RootVC
+    TTBaseNavigationViewController *rootVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     ///MARK:获取当前VC
-    TTMineViewController *minePageController = fromVC.viewControllers.firstObject;
-    UIView *selectCell = (TTProfileCollectionViewCell *)[minePageController.listCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:minePageController.selectIndex inSection:1]];
+    TTMineViewController *fromVC = rootVC.viewControllers.firstObject;
     
+    ///MARK: 获取当前选中的Cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:fromVC.selectIndex inSection:0];
+    TTProfileCollectionViewCell *selectCell = (TTProfileCollectionViewCell *)[fromVC.listCollectionView cellForItemAtIndexPath:indexPath];
+
     ///MARK:添加跳转VC到transitionContext
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
-    
-    ///MARK:获取当前CollectionView的Cell Frame
-    CGRect initialFrame = [minePageController.listCollectionView convertRect:selectCell.frame toView:[minePageController.listCollectionView superview]];
-    
-    ///MARK:
+
+    ///MARK:获取当前CollectionView的Cell的 Frame
+    CGRect initialFrame = [fromVC.listCollectionView convertRect:selectCell.frame toView:[fromVC.listCollectionView superview]];
+
+    ///MARK:跳转VC 的frame
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     
     
-    ///MARK:获取当前试图中心
+    ///MARK:获取z跳转视图中心
     toVC.view.center = CGPointMake(initialFrame.origin.x + initialFrame.size.width/2, initialFrame.origin.y + initialFrame.size.height/2);
-    
+
     ///MARK:添加转场动画
     toVC.view.transform = CGAffineTransformMakeScale(initialFrame.size.width/finalFrame.size.width, initialFrame.size.height/finalFrame.size.height);
-    
+
     [UIView animateWithDuration:duration
                           delay:0
          usingSpringWithDamping:0.8

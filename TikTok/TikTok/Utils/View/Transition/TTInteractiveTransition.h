@@ -10,6 +10,7 @@
 #import "TTHomeViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
+///MARK: 创建交互手势
 @interface TTInteractiveTransition : UIPercentDrivenInteractiveTransition
 
 @property (nonatomic, assign) BOOL interacting;

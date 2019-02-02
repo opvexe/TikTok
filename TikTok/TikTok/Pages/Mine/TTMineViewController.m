@@ -14,7 +14,6 @@
 #import "TTInteractiveTransition.h"
 #import "TTPresentingAnimator.h"
 #import "TTDismissingAnimator.h"
-#import "TTMineViewController.h"
 #define TTHeaderHeight          350 + NavBarHeight
 #define kSlideTabBarHeight      40
 @interface TTMineViewController ()
@@ -172,7 +171,12 @@ static NSInteger pageIndex;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      _selectIndex = indexPath.row;
-    
+    ///MARK: 自定义转场动画
+    TTHomeViewController *controller = [[TTHomeViewController alloc]init];
+    controller.transitioningDelegate = self;
+    controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [_swipeLeftInteractiveTransition wireToViewController:controller];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 
@@ -220,14 +224,18 @@ static NSInteger pageIndex;
 }
 
 #pragma mark UIViewControllerTransitioningDelegate
+
+ //设置弹出时动画协议
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return [[TTPresentingAnimator alloc]init];
 }
 
+ //设置消失时动画协议
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     return [[TTDismissingAnimator alloc]init];
 }
 
+//设置消失时手势协议
 -(id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
     return _swipeLeftInteractiveTransition.interacting ? _swipeLeftInteractiveTransition : nil;
 }

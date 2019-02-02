@@ -10,6 +10,8 @@
 #import "TTMineViewController.h"
 #import "TTHomeViewController.h"
 #import "TTProfileCollectionViewCell.h"
+#import "TTRootViewController.h"
+#import "TTBaseNavigationViewController.h"
 @implementation TTDismissingAnimator
 
 - (instancetype)init
@@ -30,12 +32,19 @@
 ///MARK: 切换的上下文信息
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     
+    ///MARK:当前VC
     TTHomeViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UINavigationController *toVC = (UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    TTMineViewController *userHomePageController = toVC.viewControllers.firstObject;
-    UIView *selectCell = (TTProfileCollectionViewCell *)[userHomePageController.listCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromVC.currentIndex inSection:1]];
+    ///MARK:当前RootVC
+    TTBaseNavigationViewController *rootVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
+    ///MARK:跳转VC
+    TTMineViewController *toVC = rootVC.viewControllers.firstObject;
+    
+    ///MARK: 跳转Cell
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:fromVC.currentIndex inSection:0];
+    TTProfileCollectionViewCell *selectCell = (TTProfileCollectionViewCell *)[toVC.listCollectionView cellForItemAtIndexPath:indexPath];
+
     UIView *snapshotView;
     CGFloat scaleRatio;
     CGRect finalFrame;
@@ -43,18 +52,20 @@
         snapshotView = [selectCell snapshotViewAfterScreenUpdates:NO];
         scaleRatio = fromVC.view.frame.size.width/selectCell.frame.size.width;
         snapshotView.layer.zPosition = 20;
-        finalFrame = [userHomePageController.listCollectionView convertRect:selectCell.frame toView:[userHomePageController.listCollectionView superview]];
+        finalFrame = [toVC.listCollectionView convertRect:selectCell.frame toView:[toVC.listCollectionView superview]];
     }else {
         snapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
         scaleRatio = fromVC.view.frame.size.width/[UIScreen mainScreen].bounds.size.width;
         finalFrame = _centerFrame;
     }
-    
+
+    ///MARK:添加跳转VC到transitionContext
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:snapshotView];
-    
+
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-    
+
+    ///MARK: 转场动画
     fromVC.view.alpha = 0.0f;
     snapshotView.center = fromVC.view.center;
     snapshotView.transform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
