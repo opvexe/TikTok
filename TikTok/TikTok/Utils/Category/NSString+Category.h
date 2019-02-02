@@ -303,4 +303,7 @@ NSString *cacheSizeStr(NSInteger _totalSize);
  @return 修改后的
  */
 - (NSURL *)urlScheme:(NSString *)scheme;
+
+
++ (NSString *)getUniqueStrByUUID;
 @end

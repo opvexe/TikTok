@@ -31,6 +31,7 @@
 		D059B67F21F84EFC004E4FC0 /* TTBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B67E21F84EFC004E4FC0 /* TTBaseTableViewCell.m */; };
 		D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */; };
 		D07BB12B22056A4D0045482B /* TTLikesView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BB12A22056A4D0045482B /* TTLikesView.m */; };
+		D07BB12F220579920045482B /* TTCameraToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BB12E220579920045482B /* TTCameraToolView.m */; };
 		D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */; };
 		D08A0BC021F5661D00F8D7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08A0BBF21F5661D00F8D7D9 /* Assets.xcassets */; };
 		D08A0BC621F5661D00F8D7D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A0BC521F5661D00F8D7D9 /* main.m */; };
@@ -135,6 +136,8 @@
 		D059B68221F84FD2004E4FC0 /* TTHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTHomeTableViewCell.m; sourceTree = "<group>"; };
 		D07BB12922056A4D0045482B /* TTLikesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTLikesView.h; sourceTree = "<group>"; };
 		D07BB12A22056A4D0045482B /* TTLikesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTLikesView.m; sourceTree = "<group>"; };
+		D07BB12D220579920045482B /* TTCameraToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCameraToolView.h; sourceTree = "<group>"; };
+		D07BB12E220579920045482B /* TTCameraToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCameraToolView.m; sourceTree = "<group>"; };
 		D08A0BB321F5661C00F8D7D9 /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08A0BB621F5661C00F8D7D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D08A0BB721F5661C00F8D7D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -366,6 +369,15 @@
 			path = Likes;
 			sourceTree = "<group>";
 		};
+		D07BB12C2205797E0045482B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D07BB12D220579920045482B /* TTCameraToolView.h */,
+				D07BB12E220579920045482B /* TTCameraToolView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D08A0BAA21F5661C00F8D7D9 = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +597,7 @@
 		D08A0C3121F594D000F8D7D9 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				D07BB12C2205797E0045482B /* View */,
 				D08A0C3221F594E700F8D7D9 /* TTPublishViewController.h */,
 				D08A0C3321F594E700F8D7D9 /* TTPublishViewController.m */,
 			);
@@ -897,6 +910,7 @@
 				C2A6AFA221FD74A7002EE4B1 /* WebCacheHelpler.m in Sources */,
 				D08A0C3821F5BDC900F8D7D9 /* TTTools.m in Sources */,
 				D08A0C1621F569AE00F8D7D9 /* TTRootViewController.m in Sources */,
+				D07BB12F220579920045482B /* TTCameraToolView.m in Sources */,
 				D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */,
 				C2358FB721F74B0200298E14 /* TTUserModel.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
@@ -1061,7 +1075,7 @@
 				DEVELOPMENT_TEAM = 3NJC3EGBWR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TikTok/Resources/TikTokPrefixHeader.pch";
 				INFOPLIST_FILE = TikTok/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1081,7 +1095,7 @@
 				DEVELOPMENT_TEAM = 3NJC3EGBWR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TikTok/Resources/TikTokPrefixHeader.pch";
 				INFOPLIST_FILE = TikTok/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

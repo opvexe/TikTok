@@ -568,4 +568,19 @@ NSString *cacheSizeStr(NSInteger _totalSize){
     return [components URL];
 }
 
++ (NSString *)getUniqueStrByUUID
+{
+    CFUUIDRef uuidObj = CFUUIDCreate(nil);//create a new UUID
+    
+    //get the string representation of the UUID
+    CFStringRef uuidString = CFUUIDCreateString(nil, uuidObj);
+    
+    NSString *str = [NSString stringWithString:(__bridge NSString *)uuidString];
+    
+    CFRelease(uuidObj);
+    CFRelease(uuidString);
+    
+    return [str lowercaseString];
+}
+
 @end
