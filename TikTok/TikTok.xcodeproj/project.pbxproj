@@ -13,6 +13,8 @@
 		C2358FBB21F7577300298E14 /* awemes.json in Resources */ = {isa = PBXBuildFile; fileRef = C2358FBA21F7577300298E14 /* awemes.json */; };
 		C2358FBE21F8A15900298E14 /* TTMusicAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2358FBD21F8A15900298E14 /* TTMusicAlbumView.m */; };
 		C2358FC121F8AA9800298E14 /* TTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2358FC021F8AA9800298E14 /* TTPlayerView.m */; };
+		C24BB2ED2221391700EAA93B /* TTPopShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2EC2221391700EAA93B /* TTPopShowView.m */; };
+		C24BB2F022213FE300EAA93B /* TTMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */; };
 		C2A6AFA221FD74A7002EE4B1 /* WebCacheHelpler.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AFA121FD74A7002EE4B1 /* WebCacheHelpler.m */; };
 		D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */; };
 		D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */; };
@@ -98,6 +100,10 @@
 		C2358FBD21F8A15900298E14 /* TTMusicAlbumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMusicAlbumView.m; sourceTree = "<group>"; };
 		C2358FBF21F8AA9800298E14 /* TTPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPlayerView.h; sourceTree = "<group>"; };
 		C2358FC021F8AA9800298E14 /* TTPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPlayerView.m; sourceTree = "<group>"; };
+		C24BB2EB2221391700EAA93B /* TTPopShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTPopShowView.h; sourceTree = "<group>"; };
+		C24BB2EC2221391700EAA93B /* TTPopShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPopShowView.m; sourceTree = "<group>"; };
+		C24BB2EE22213FE300EAA93B /* TTMessageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTMessageDetailViewController.h; sourceTree = "<group>"; };
+		C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMessageDetailViewController.m; sourceTree = "<group>"; };
 		C2A6AFA021FD74A6002EE4B1 /* WebCacheHelpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCacheHelpler.h; sourceTree = "<group>"; };
 		C2A6AFA121FD74A7002EE4B1 /* WebCacheHelpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCacheHelpler.m; sourceTree = "<group>"; };
 		D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonStyle.m"; sourceTree = "<group>"; };
@@ -549,6 +555,10 @@
 			children = (
 				D08A0C2821F5732F00F8D7D9 /* TTMessageViewController.h */,
 				D08A0C2921F5732F00F8D7D9 /* TTMessageViewController.m */,
+				C24BB2EE22213FE300EAA93B /* TTMessageDetailViewController.h */,
+				C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */,
+				C24BB2EB2221391700EAA93B /* TTPopShowView.h */,
+				C24BB2EC2221391700EAA93B /* TTPopShowView.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -866,6 +876,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08A0BC621F5661D00F8D7D9 /* main.m in Sources */,
+				C24BB2F022213FE300EAA93B /* TTMessageDetailViewController.m in Sources */,
 				D08A0C2421F5730F00F8D7D9 /* TTHomeViewController.m in Sources */,
 				C2358FBE21F8A15900298E14 /* TTMusicAlbumView.m in Sources */,
 				D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */,
@@ -913,6 +924,7 @@
 				D07BB12F220579920045482B /* TTCameraToolView.m in Sources */,
 				D059B68321F84FD2004E4FC0 /* TTHomeTableViewCell.m in Sources */,
 				C2358FB721F74B0200298E14 /* TTUserModel.m in Sources */,
+				C24BB2ED2221391700EAA93B /* TTPopShowView.m in Sources */,
 				D08A0BB821F5661C00F8D7D9 /* AppDelegate.m in Sources */,
 				D059B66F21F6FE38004E4FC0 /* TTProfileHeaderCollectionReusableView.m in Sources */,
 				D08A0C0721F5685A00F8D7D9 /* NSString+Category.m in Sources */,

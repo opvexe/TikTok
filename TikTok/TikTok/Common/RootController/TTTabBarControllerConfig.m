@@ -31,7 +31,7 @@
     return _tabBarController;
 }
 - (NSArray *)viewControllers {
-    TTHomeViewController *homeViewController = [[TTHomeViewController alloc] init];
+    TTMessageViewController *homeViewController = [[TTMessageViewController alloc] init];
     UIViewController *homeNavigationController = [[TTBaseNavigationViewController alloc]
                                                   initWithRootViewController:homeViewController];
     

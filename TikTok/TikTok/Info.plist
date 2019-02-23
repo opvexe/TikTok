@@ -58,5 +58,7 @@
 	<string>访问麦克风权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>访问相册权限</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>访问相册集权限</string>
 </dict>
 </plist>

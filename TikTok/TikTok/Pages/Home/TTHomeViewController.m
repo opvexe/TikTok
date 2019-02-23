@@ -38,6 +38,7 @@ UIViewControllerTransitioningDelegate
     [super viewWillDisappear:animated];
     [self setStatusBarHidden:NO];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [[TTAVPlayerManager shareManager] pauseAll];
 }
 
 - (void)viewDidLoad {

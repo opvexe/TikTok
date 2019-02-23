@@ -362,8 +362,7 @@
     }
 }
 
-
-
+#pragma mark 
 - (void)dealloc{
     if ([_session isRunning]) {
         [_session stopRunning];
