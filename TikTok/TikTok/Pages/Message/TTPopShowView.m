@@ -53,7 +53,7 @@
             UILabel *iv = [[UILabel alloc]init];
             iv.textColor = [UIColor blackColor];
             iv.text = @"风险提示";
-            iv.font = [UIFont boldSystemFontOfSize:18.0f];
+            iv.font = [UIFont boldSystemFontOfSize:16.0f];
             iv.textAlignment = NSTextAlignmentCenter;
             [self.container addSubview:iv];
             [iv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,9 +69,15 @@
             UILabel *iv = [[UILabel alloc]init];
             iv.textColor = [UIColor lightGrayColor];
             iv.text = comment;
-            iv.font = [UIFont systemFontOfSize:18.0];
+            iv.font = [UIFont systemFontOfSize:16.0f];
             iv.textAlignment = NSTextAlignmentCenter;
             iv.numberOfLines = 0;
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:comment];
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+            paragraphStyle.lineSpacing = 10.0;
+            paragraphStyle.alignment=NSTextAlignmentCenter;
+            [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [comment length])];
+            iv.attributedText = attributedString;
             [self.container addSubview:iv];
             [iv mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(self.title.mas_bottom).mas_offset(20.0f);

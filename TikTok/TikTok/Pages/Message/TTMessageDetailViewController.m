@@ -27,7 +27,11 @@
 }
 
 -(void)Click{
+//    TTPopShowView *popShow = [[TTPopShowView alloc]initWithComment:@"解约后，蒋停用缴费代扣功能，\n请您留意账单信息，及时缴费！"];
     
+    TTPopShowView *popShow = [[TTPopShowView alloc]initWithComment:@"该缴费编号已开通账单提醒，\n为避免重复缴费，请先关闭账单\n提醒功能后再签约代扣服务。"];
+    
+    [popShow show];
 }
 
 

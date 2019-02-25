@@ -16,9 +16,13 @@
         
         return 0;
     }
+    NSMutableAttributedString *astr = [[NSMutableAttributedString alloc] initWithString:string];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+    paragraphStyle.lineSpacing = 10.0;
+    [astr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, string.length)];
+    [astr addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, string.length)];
     
-    NSAttributedString *astr = [[NSAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName:font}];
-    
+   
     CGSize contanSize = CGSizeMake(width, CGFLOAT_MAX);
     
     if (iOS7) {

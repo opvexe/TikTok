@@ -15,6 +15,8 @@
 		C2358FC121F8AA9800298E14 /* TTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2358FC021F8AA9800298E14 /* TTPlayerView.m */; };
 		C24BB2ED2221391700EAA93B /* TTPopShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2EC2221391700EAA93B /* TTPopShowView.m */; };
 		C24BB2F022213FE300EAA93B /* TTMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */; };
+		C24BB2F322214AF500EAA93B /* TTSliderContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2F222214AF500EAA93B /* TTSliderContentViewController.m */; };
+		C24BB2F622214CE200EAA93B /* TTMessageHoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BB2F522214CE200EAA93B /* TTMessageHoldViewController.m */; };
 		C2A6AFA221FD74A7002EE4B1 /* WebCacheHelpler.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AFA121FD74A7002EE4B1 /* WebCacheHelpler.m */; };
 		D059B64921F6A81B004E4FC0 /* UIButton+ButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */; };
 		D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D059B64C21F6CFE4004E4FC0 /* TTBaseView.m */; };
@@ -104,6 +106,10 @@
 		C24BB2EC2221391700EAA93B /* TTPopShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTPopShowView.m; sourceTree = "<group>"; };
 		C24BB2EE22213FE300EAA93B /* TTMessageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTMessageDetailViewController.h; sourceTree = "<group>"; };
 		C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMessageDetailViewController.m; sourceTree = "<group>"; };
+		C24BB2F122214AF500EAA93B /* TTSliderContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSliderContentViewController.h; sourceTree = "<group>"; };
+		C24BB2F222214AF500EAA93B /* TTSliderContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTSliderContentViewController.m; sourceTree = "<group>"; };
+		C24BB2F422214CE200EAA93B /* TTMessageHoldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTMessageHoldViewController.h; sourceTree = "<group>"; };
+		C24BB2F522214CE200EAA93B /* TTMessageHoldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMessageHoldViewController.m; sourceTree = "<group>"; };
 		C2A6AFA021FD74A6002EE4B1 /* WebCacheHelpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCacheHelpler.h; sourceTree = "<group>"; };
 		C2A6AFA121FD74A7002EE4B1 /* WebCacheHelpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCacheHelpler.m; sourceTree = "<group>"; };
 		D059B64721F6A81A004E4FC0 /* UIButton+ButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ButtonStyle.m"; sourceTree = "<group>"; };
@@ -557,8 +563,12 @@
 				D08A0C2921F5732F00F8D7D9 /* TTMessageViewController.m */,
 				C24BB2EE22213FE300EAA93B /* TTMessageDetailViewController.h */,
 				C24BB2EF22213FE300EAA93B /* TTMessageDetailViewController.m */,
+				C24BB2F422214CE200EAA93B /* TTMessageHoldViewController.h */,
+				C24BB2F522214CE200EAA93B /* TTMessageHoldViewController.m */,
 				C24BB2EB2221391700EAA93B /* TTPopShowView.h */,
 				C24BB2EC2221391700EAA93B /* TTPopShowView.m */,
+				C24BB2F122214AF500EAA93B /* TTSliderContentViewController.h */,
+				C24BB2F222214AF500EAA93B /* TTSliderContentViewController.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -881,6 +891,7 @@
 				C2358FBE21F8A15900298E14 /* TTMusicAlbumView.m in Sources */,
 				D059B66621F6FD2E004E4FC0 /* TTBaseCollectionReusableView.m in Sources */,
 				D08A0C0A21F5685A00F8D7D9 /* UIGestureRecognizer+WDExtension.m in Sources */,
+				C24BB2F322214AF500EAA93B /* TTSliderContentViewController.m in Sources */,
 				D0EB58E521F9AE7400F1AB74 /* TTCommentShowView.m in Sources */,
 				D08A0C3021F5940A00F8D7D9 /* TTPlusButtonSubclass.m in Sources */,
 				D059B65E21F6FB1B004E4FC0 /* TTHoverViewFlowLayout.m in Sources */,
@@ -905,6 +916,7 @@
 				D0F18F5E21FA9960007D6AB7 /* TTShareShowView.m in Sources */,
 				D08A0C0421F5685A00F8D7D9 /* UIColor+Theme.m in Sources */,
 				D08A0C2A21F5732F00F8D7D9 /* TTMessageViewController.m in Sources */,
+				C24BB2F622214CE200EAA93B /* TTMessageHoldViewController.m in Sources */,
 				D0F18F6121FAB022007D6AB7 /* TTAnimationButton.m in Sources */,
 				D059B65221F6D07B004E4FC0 /* TTBaseModel.m in Sources */,
 				D059B64D21F6CFE5004E4FC0 /* TTBaseView.m in Sources */,
